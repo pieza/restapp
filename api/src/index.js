@@ -1,8 +1,7 @@
 const dotenv = require('dotenv')
 dotenv.config()
-
 // db connection
-// require('./database')
+require('./database')
 
 // server
 const app = require('./server')
