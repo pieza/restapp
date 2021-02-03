@@ -1,17 +1,13 @@
-/* Libraries */
-const dotenv = require('dotenv');
-const dotEnvExpand = require('dotenv-expand');
-/* Set and expand dotenv config  */
+const dotenv = require('dotenv')
+dotenv.config()
 
-dotEnvExpand(dotenv.config({path: `${__dirname}/../.env`}))
+// db connection
+// require('./database')
 
-/* Database Connection  */
-require("./database");
+// server
+const app = require('./server')
 
-/* Server  */
-const app = require("./server");
-
-/* Start our server  */
-app.listen(app.get("port"), () => {
-	console.log(`Server on port: ${app.get("port")}`);
-});
+// starting the server
+app.listen(app.get('port'), () => {
+  console.log(`server listening on port ${app.get('port')}`)
+})
