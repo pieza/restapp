@@ -3,7 +3,6 @@ const { Schema } = mongoose
 
 /**
 * @description Representa unidades de Medida
-* Ejemplo: { codigo: PAI-01, nombre: Portugal }
 */
 const MedidaSchema = new Schema({
   codigo: { type: String },
