@@ -8,7 +8,7 @@ const PuestoSchema = new Schema({
   codigo: { type: String },
   nombre: { type: String },
   tipo: { type: String },
-  rol: { type: ObjectId, ref: 'Rol' },
+  rol: { type: { type: ObjectId, ref: 'Rol' } },
 });
 
 module.exports = mongoose.model('Puesto', PuestoSchema);

@@ -1,10 +1,10 @@
 const express = require("express")
 const morgan = require("morgan")
 const path = require("path")
+const fs = require("fs")
 const cors = require('cors')
 const app = express()
 const handleError = require('./utils/error-handler')
-const PaisRoute = require("./routes/pais.route")
 
 // server settings
 app.set("port", process.env.PORT || 3000)
@@ -28,7 +28,12 @@ app.use("*", (req, res, next) => {
 })
 
 // routes
-app.use(`${process.env.API_PATH}`, new PaisRoute().router)
-
+const normalizedPath = path.join(__dirname, "routes")
+// auto register all routes in /routes folder
+fs.readdirSync(normalizedPath).forEach((file) => {
+  if(!file.match(/^(.*)\.route\.js$/)) return
+  let Route  = require("./routes/" + file)
+  app.use(`${process.env.API_PATH}`, new Route().router)
+})
 
 module.exports = app

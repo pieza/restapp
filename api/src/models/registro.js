@@ -9,7 +9,7 @@ const RegistroSchema = new Schema({
   fecha: { type: Date },
   descripcion: { type: String },
   entrada: { type: Number },
-  restaurante: { type: ObjectId, ref: 'Restaurante' },
+  restaurante: { type: { type: ObjectId, ref: 'Restaurante' } },
 });
 
 module.exports = mongoose.model('Registro', RegistroSchema);
