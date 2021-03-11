@@ -10,7 +10,10 @@ export default class Service {
   }
 
   async create(object) {
-    console.log(this.url)
     return await this.axios.post(this.url, object)
+  }
+
+  async find(filters) {
+    return (await this.axios.get(this.url)).data
   }
 }

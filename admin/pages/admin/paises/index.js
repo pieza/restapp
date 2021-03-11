@@ -1,14 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 // reactstrap components
 import {
   Button,
-  Card,
-  CardHeader,
-  CardBody,
-  FormGroup,
-  Form,
-  Input,
   Container,
   Row,
   Col,
@@ -17,23 +11,39 @@ import {
 import Admin from "layouts/Admin.js";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
-import BaseForm from "../../../components/Generic/BaseForm";
 import PaisService from "../../../services/pais.service";
 import Link from "next/link";
+import BaseTable from "../../../components/Generic/BaseTable";
 
 function Paises() {
   const service = new PaisService()
   const callback = (model) => {
     service.create(model)
   }
+
+  const [data, setData] = useState([]);
+  useEffect(async () => {
+    setData(await service.find())
+  }, []);
   return (
     <>
       <UserHeader />
-      {/* Page content */}
-      
-      <Link href="/admin/paises/crear">
-        <Button className="btn btn-info">Nuevo Pais</Button>
-      </Link> 
+      {/* Table */}
+      <Container className="mt--7" fluid>
+        <Row>
+          <Col  xl="12">
+            <BaseTable title="Paises" data={data} />
+          </Col>
+        </Row>
+        {/* Footer */}
+        <Row>
+          <Col className="py-4" lg="6">
+            <Link href="/admin/paises/crear">
+              <Button className="btn btn-info">Nuevo Pais</Button>
+            </Link> 
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
