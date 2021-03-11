@@ -13,15 +13,15 @@ import {
   Row,
   Col,
 } from "reactstrap";
+
 // layout for this page
 import Admin from "layouts/Admin.js";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
 import PaisService from "../../../services/pais.service";
-import Link from "next/link";
 
-function Paises() {
+function CrearPaises() {
   const service = new PaisService()
   const callback = (model) => {
     service.create(model)
@@ -30,14 +30,12 @@ function Paises() {
     <>
       <UserHeader />
       {/* Page content */}
-      
-      <Link href="/admin/paises/crear">
-        <Button className="btn btn-info">Nuevo Pais</Button>
-      </Link> 
+      <BaseForm title="Crear Paises" item={{nombre: 'test'}} callback={callback}>
+      </BaseForm>
     </>
   );
 }
 
-Paises.layout = Admin;
+CrearPaises.layout = Admin;
 
-export default Paises;
+export default CrearPaises;
