@@ -53,7 +53,7 @@ module.exports = class Route {
     this.router.get(`${this.path}/:id`, async (req, res, next) => {
       try {
         const id = req.params.id
-        let result = await this.service.findOne(id)
+        let result = await this.service.findById(id)
 
         return res.status(200).json(result)
       } catch (error) {

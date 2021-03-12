@@ -18,11 +18,6 @@ import BaseTable from "../../../components/Generic/BaseTable";
 function Consecutivos() {
   const service = new Service()
 
-  const [data, setData] = useState([]);
-  useEffect(async () => {
-    setData(await service.find())
-  }, []);
-
   return (
     <>
       <UserHeader />
@@ -30,7 +25,7 @@ function Consecutivos() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Consecutivos" data={data} service={service} />
+            <BaseTable title="Consecutivos" service={service} />
           </Col>
         </Row>
         {/* Footer */}

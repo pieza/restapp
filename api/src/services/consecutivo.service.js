@@ -11,9 +11,8 @@ module.exports = class ConsecutivoService extends Service {
    * @returns generated code.
    */
   async generate(modelName) {
-    console.log(modelName)
     let codigo = ''
-    let consecutivo = await super.find({ descripcion: modelName })
+    let consecutivo = await super.findOne({ descripcion: modelName })
 
     if(!consecutivo) return codigo 
 
@@ -22,9 +21,11 @@ module.exports = class ConsecutivoService extends Service {
     if(consecutivo.posee_prefijo) {
       codigo = `${consecutivo.prefijo}-${consecutivo.consecutivo}`
     } else {
-      codigo = consecutivo.consecutivo
+      codigo = consecutivo.consecutivo.toString()
     }
-    
+
+    await super.update(consecutivo._id, consecutivo)
+
     return codigo
   }
 }

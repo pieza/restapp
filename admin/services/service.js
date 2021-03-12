@@ -1,4 +1,5 @@
 import axios from 'axios';
+import AlertUtil from '../utils/alert';
 
 export default class Service {
   constructor(route) {
@@ -10,15 +11,36 @@ export default class Service {
   }
 
   async create(object) {
-    return await this.axios.post(this.url, object)
+    let response = await this.axios.post(this.url, object)
+
+    if(!response || response.status != 200) {
+      console.error(response)
+      AlertUtil.error('Ha ocurrido un error.')
+    }
+    
+    return response.data
   }
 
   async find(filters) {
-    return (await this.axios.get(this.url)).data
+    let response = await this.axios.get(this.url)
+
+    if(!response || response.status != 200) {
+      console.error(response)
+      AlertUtil.error('Ha ocurrido un error.')
+    }
+
+    return response.data
   }
 
   async delete(id) {
-    return (await this.axios.delete(`${this.url}/${id}`)).data
+    let response = await this.axios.delete(`${this.url}/${id}`)
+
+    if(!response || response.status != 200) {
+      console.error(response)
+      AlertUtil.error('Ha ocurrido un error.')
+    }
+
+    return response.data
   }
 
 }

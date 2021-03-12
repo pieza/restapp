@@ -9,8 +9,17 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import AlertUtil from "../../utils/alert";
 
 export default function BaseForm({ children, title, item, callback }) {
+
+  const handleButton = async (e) => {
+    e.preventDefault();
+    if(await callback(item)) {
+      AlertUtil.success('Elemento guardado correctamente!')
+    }
+  }
+
   return (
     <Container className="mt--7" fluid>
       <Row>
@@ -32,7 +41,7 @@ export default function BaseForm({ children, title, item, callback }) {
                       <Button
                         className="mr-4"
                         color="success"
-                        onClick={(e) => {e.preventDefault();callback(item)}}
+                        onClick={handleButton}
                         size="md"
                       >
                         Guardar

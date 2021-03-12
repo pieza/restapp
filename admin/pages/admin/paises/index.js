@@ -32,7 +32,7 @@ function Paises() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Paises" data={data} />
+            <BaseTable title="Paises" data={data} service={service} />
           </Col>
         </Row>
         {/* Footer */}

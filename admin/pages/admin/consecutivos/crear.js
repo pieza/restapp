@@ -22,7 +22,7 @@ function CrearConsecutivos() {
   const [item, setItem] = useState({ consecutivo: 0 })
 
   const callback = async (data) => {
-    await service.create(data)
+    return await service.create(data)
   }
 
   return (

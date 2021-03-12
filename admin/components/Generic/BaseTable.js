@@ -1,5 +1,5 @@
-import React from "react";
-import { Router, useRouter } from 'next/router';
+import React, { useEffect, useState } from "react";
+import { useRouter } from 'next/router';
 import {
   Button,
   Card,
@@ -7,9 +7,20 @@ import {
   Table,
   Row,
 } from "reactstrap";
+import AlertUtil from "../../utils/alert";
 
-export default function BaseTable({ data, title, headers, service }) {
+export default function BaseTable({ title, headers, service, ignoreProps }) {
   const router = useRouter()
+
+  const [data, setData] = useState([]);
+  
+  const fetchData = async () => {
+    setData(await service.find())
+  }
+
+  useEffect(async () => {
+    fetchData();
+  }, []);
 
   if(!data || data.length == 0) return (<>
     <Card className="shadow">
@@ -31,10 +42,9 @@ export default function BaseTable({ data, title, headers, service }) {
     }
   }
 
-  const ignoreHeaders = ['_id', '__v']
+  const ignoreHeaders = ['_id', '__v'].concat(ignoreProps)
   
   for(let item of ignoreHeaders) {
-    console.log(item)
     let index = headers.indexOf(item);
     if (index > -1) {
       headers.splice(index, 1);
@@ -50,7 +60,11 @@ export default function BaseTable({ data, title, headers, service }) {
   }
 
   const destroy = async (id) => {
-    await service.delete(id)
+    if(await service.delete(id)) {
+      AlertUtil.success('Elemento eliminado correctamente.');
+    }
+    
+    fetchData();
   } 
 
   return (
