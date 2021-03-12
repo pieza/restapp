@@ -1,15 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 // reactstrap components
 import {
-  Button,
-  Card,
-  CardHeader,
-  CardBody,
   FormGroup,
-  Form,
   Input,
-  Container,
   Row,
   Col,
 } from "reactstrap";
@@ -19,18 +13,33 @@ import Admin from "layouts/Admin.js";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
-import PaisService from "../../../services/pais.service";
+import Service from "../../../services/pais.service";
 
 function CrearPaises() {
-  const service = new PaisService()
-  const callback = (model) => {
-    service.create(model)
+  const service = new Service()
+
+  const [item, setItem] = useState({})
+
+  const callback = async (data) => {
+    await service.create(data)
   }
+
   return (
     <>
       <UserHeader />
-      {/* Page content */}
-      <BaseForm title="Crear Paises" item={{nombre: 'test'}} callback={callback}>
+      <BaseForm title="Crear Paises" item={item} callback={callback}>
+        <Row>
+          <Col lg="6">
+            <FormGroup>
+              <label>Nombre</label>
+              <Input
+                className="form-contrsol-alternative"
+                type="text"
+                onChange={e => setItem({ ...item, nombre: e.target.value })}
+              />
+            </FormGroup>
+          </Col>
+        </Row>
       </BaseForm>
     </>
   );

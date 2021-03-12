@@ -16,4 +16,9 @@ export default class Service {
   async find(filters) {
     return (await this.axios.get(this.url)).data
   }
+
+  async delete(id) {
+    return (await this.axios.delete(`${this.url}/${id}`)).data
+  }
+
 }

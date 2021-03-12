@@ -12,6 +12,12 @@ var routes = [
     layout: "/admin",
   },
   {
+    path: "/consecutivos",
+    name: "Consecutivos",
+    icon: "ni ni-collection text-info",
+    layout: "/admin",
+  },
+  {
     path: "/paises",
     name: "Paises",
     icon: "ni ni-world text-blue",

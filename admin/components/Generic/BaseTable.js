@@ -1,22 +1,29 @@
 import React from "react";
+import { Router, useRouter } from 'next/router';
 import {
   Button,
   Card,
   CardHeader,
-  CardBody,
-  NavItem,
-  NavLink,
-  Nav,
-  Progress,
   Table,
-  Container,
   Row,
-  Col,
 } from "reactstrap";
 
-export default function BaseTable({ data, title, headers }) {
-  if(!data || data.length == 0) return (<></>)
-  console.log(data)
+export default function BaseTable({ data, title, headers, service }) {
+  const router = useRouter()
+
+  if(!data || data.length == 0) return (<>
+    <Card className="shadow">
+      <CardHeader className="border-0">
+        <Row className="align-items-center">
+          <div className="col">
+            <h3 className="mb-0">No hay datos.</h3>
+          </div>
+        </Row>
+      </CardHeader>
+    </Card>
+  </>)
+
+
   if(!headers || headers.length == 0) {
     headers = []
     for(let prop in data[0]) {
@@ -34,6 +41,18 @@ export default function BaseTable({ data, title, headers }) {
     }
   }
 
+  const getValue = (item) => {
+    if(typeof(item) == 'boolean') {
+      return item ? 'Si' : 'No'
+    }
+
+    return item
+  }
+
+  const destroy = async (id) => {
+    await service.delete(id)
+  } 
+
   return (
     <Card className="shadow">
       <CardHeader className="border-0">
@@ -46,7 +65,9 @@ export default function BaseTable({ data, title, headers }) {
       <Table className="align-items-center table-flush" responsive>
         <thead className="thead-light">
           <tr>
-            { headers.map((item, key) => <th scope="col" key={key}>{item}</th>)}
+            { headers.map((item, key) => <th scope="col" key={key}>{item.replace('_', ' ')}</th>)}
+            <th>Editar</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
@@ -55,9 +76,29 @@ export default function BaseTable({ data, title, headers }) {
               <tr key={entryKey}>
                 { headers.map((header, key) => {
                   return (
-                    <td key={key}>{entry[header]}</td>
+                    <td key={key}>
+                      { getValue(entry[header]) }
+                    </td>
                   )
                 })}
+                <td>
+                  <Button 
+                    color="info" 
+                    type="button" 
+                    size="sm"
+                    onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
+                    Editar
+                  </Button>
+                </td>
+                <td>
+                  <Button 
+                    color="danger" 
+                    type="button" 
+                    size="sm"
+                    onClick={e => destroy(entry._id)}>
+                    Eliminar
+                  </Button>
+                </td>
               </tr>
             )
           })}
