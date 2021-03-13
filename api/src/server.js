@@ -45,6 +45,7 @@ fs.readdirSync(normalizedPath).forEach((file) => {
   app.use(`${process.env.API_PATH}`, new Route().router);
 });
 
-// auth test
+// auth route & Passport
 app.use(`${process.env.API_PATH}`, authroute);
+require('./passport')(passport);
 module.exports = app;
