@@ -5,7 +5,7 @@ const fs = require('fs');
 const cors = require('cors');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
-const authroute = require('./routes/auth.route');
+const authroute = require('./routes/auth.route.local');
 
 const app = express();
 const handleError = require('./utils/error-handler');
@@ -37,13 +37,13 @@ app.use('*', (req, res, next) => {
 });
 
 // routes
-/* const normalizedPath = path.join(__dirname, 'routes');
- * // auto register all routes in /routes folder
- * fs.readdirSync(normalizedPath).forEach((file) => {
- *   if (!file.match(/^(.*)\.route\.js$/)) return;
- *   const Route = require(`./routes/${file}`);
- *   app.use(`${process.env.API_PATH}`, new Route().router);
- * }); */
+const normalizedPath = path.join(__dirname, 'routes');
+// auto register all routes in /routes folder
+fs.readdirSync(normalizedPath).forEach((file) => {
+  if (!file.match(/^(.*)\.route\.js$/)) return;
+  const Route = require(`./routes/${file}`);
+  app.use(`${process.env.API_PATH}`, new Route().router);
+});
 
 // auth test
 app.use(`${process.env.API_PATH}`, authroute);
