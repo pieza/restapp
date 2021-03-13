@@ -21,7 +21,7 @@ const UsuarioSchema = new Schema({
 });
 
 /** to JSON parser  */
-UsuarioSchema.methods.toJSON = () => {
+UsuarioSchema.methods.toJSON = function () {
   const usuario = this;
   const usuarioObject = usuario.toObject();
   delete usuarioObject.password;
