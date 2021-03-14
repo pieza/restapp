@@ -1,6 +1,6 @@
-const Service = require('./Service')
+const BaseService = require('./baseService')
 const Medida = require("../models/medida")
 
-module.exports = class MedidaService extends Service {
+module.exports = class MedidaService extends BaseService {
   constructor() { super(Medida) }
 }

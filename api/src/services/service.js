@@ -26,11 +26,20 @@ module.exports = class Service {
   }
 
   /**
+   * Find one filtered object.
+   * 
+   * @param {object} filters search criteria.
+   */
+  async findOne(filters) {
+    return await this.model.findOne(filters)
+  }
+
+  /**
    * Find an object by id.
    * 
    * @param {string} id mongo object id
    */
-  async findOne(id) {
+   async findById(id) {
     return await this.model.findById(id)
   }
 
@@ -59,6 +68,6 @@ module.exports = class Service {
    * @param {string} id mongo object id.
    */
   async delete(id) {
-    return await this.model.deleteOne({ _id: id })
+    return (await this.model.deleteOne({ _id: id })).ok == 1
   }
 }

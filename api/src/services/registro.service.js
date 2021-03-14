@@ -1,6 +1,6 @@
-const Service = require('./Service')
+const BaseService = require('./baseService')
 const Registro = require("../models/registro")
 
-module.exports = class RegistroService extends Service {
+module.exports = class RegistroService extends BaseService {
   constructor() { super(Registro) }
 }

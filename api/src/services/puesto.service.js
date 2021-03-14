@@ -1,6 +1,6 @@
-const Service = require('./Service')
+const BaseService = require('./baseService')
 const Puesto = require("../models/puesto")
 
-module.exports = class PuestoService extends Service {
+module.exports = class PuestoService extends BaseService {
   constructor() { super(Puesto) }
 }
