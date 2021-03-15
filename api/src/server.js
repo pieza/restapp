@@ -4,7 +4,7 @@ const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
 const passport = require('passport');
-const cookieParser = require('cookie-parser');
+const session = require('express-session');
 const authroute = require('./routes/auth.route.local');
 
 const app = express();
@@ -17,12 +17,21 @@ app.set('port', process.env.PORT || 3000);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
+// Express Session Middleware
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 7200000,
+      httpOnly: false,
+      secure: false,
+    },
+  }),
+);
 app.use(passport.initialize());
 app.use(passport.session());
-
-// Cookie Parser
-
-app.use(cookieParser());
 
 // error handle
 app.use(handleError);
@@ -48,4 +57,5 @@ fs.readdirSync(normalizedPath).forEach((file) => {
 // auth route & Passport
 app.use(`${process.env.API_PATH}`, authroute);
 require('./passport')(passport);
+
 module.exports = app;
