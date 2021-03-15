@@ -28,4 +28,9 @@ router.post('/signin', (req, res, next) => {
   })(req, res, next);
 });
 
+// [GET] Logout Usuario
+router.get('/logout', (req, res) => {
+  req.logout();
+  res.send('');
+});
 module.exports = router;
