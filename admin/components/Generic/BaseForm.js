@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { 
   Button,
@@ -12,11 +13,19 @@ import {
 import AlertUtil from "../../utils/alert";
 
 export default function BaseForm({ children, title, item, callback }) {
+  const router = useRouter()
 
   const handleButton = async (e) => {
     e.preventDefault();
-    if(await callback(item)) {
-      AlertUtil.success('Elemento guardado correctamente!')
+
+    let result = await callback(item)
+
+    if(result) {
+      let x = await AlertUtil.success('Elemento guardado correctamente!')
+      console.log(x)
+      let routes = router.pathname.split('/')
+      routes.pop()
+      router.push(`${routes.join('/')}`)
     }
   }
 
