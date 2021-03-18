@@ -236,7 +236,7 @@ function Sidebar(props) {
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-beer text-blue"></i>
+              <i className="fa fa-beer text-blue"></i>
                 Bebidas
               </NavLink>
             </NavItem>
@@ -254,19 +254,19 @@ function Sidebar(props) {
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-user text-blue"></i>
+              <i className="fa fa-user text-blue"></i>
                 Empleados
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-users text-blue"></i>
+              <i className="fa fa-users text-blue"></i>
                 Clientes
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-user-plus text-blue"></i>
+              <i className="fa fa-user-plus text-blue"></i>
                 Puestos
               </NavLink>
             </NavItem>
@@ -285,7 +285,7 @@ function Sidebar(props) {
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/colors/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-building text-info"></i>
+              <i className="fa fa-building text-info"></i>
                 Empresas
               </NavLink>
             </NavItem>
@@ -303,7 +303,7 @@ function Sidebar(props) {
             </NavItem>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-truck text-info"></i>
+              <i className="fa fa-truck text-info"></i>
                 Proovedores
               </NavLink>
             </NavItem>
@@ -316,7 +316,7 @@ function Sidebar(props) {
           <Nav className="mb-md-3" navbar>
             <NavItem>
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
-              <i class="fa fa-list text-pink" aria-hidden="true"></i>
+              <i className="fa fa-list text-pink" aria-hidden="true"></i>
                 Bitácora
               </NavLink>
             </NavItem>

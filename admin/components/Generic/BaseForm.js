@@ -21,8 +21,7 @@ export default function BaseForm({ children, title, item, callback }) {
     let result = await callback(item)
 
     if(result) {
-      let x = await AlertUtil.success('Elemento guardado correctamente!')
-      console.log(x)
+      await AlertUtil.success('Elemento guardado correctamente!')
       let routes = router.pathname.split('/')
       routes.pop()
       router.push(`${routes.join('/')}`)

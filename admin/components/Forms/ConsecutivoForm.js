@@ -1,4 +1,4 @@
-import { Col, FormGroup, Input, Row } from "reactstrap";
+import { Col, FormGroup, Input, Label, Row } from "reactstrap";
 
 export default function ConsecutivoForm({ item, setItem }) {
   return (
