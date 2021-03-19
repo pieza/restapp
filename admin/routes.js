@@ -12,21 +12,15 @@ var routes = [
     layout: "/admin",
   },
   {
-    path: "/maps",
-    name: "Maps",
-    icon: "ni ni-pin-3 text-orange",
+    path: "/consecutivos",
+    name: "Consecutivos",
+    icon: "ni ni-collection text-info",
     layout: "/admin",
   },
   {
     path: "/paises",
-    name: "User Profile",
-    icon: "ni ni-single-02 text-yellow",
-    layout: "/admin",
-  },
-  {
-    path: "/tables",
-    name: "Tables",
-    icon: "ni ni-bullet-list-67 text-red",
+    name: "Paises",
+    icon: "ni ni-world text-blue",
     layout: "/admin",
   },
   {

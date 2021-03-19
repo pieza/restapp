@@ -181,10 +181,10 @@ function Sidebar(props) {
                       <img alt={logo.imgAlt} src={logo.imgSrc} />
                     </Link>
                   ) : (
-                    <a href={logo.outterLink}>
-                      <img alt={logo.imgAlt} src={logo.imgSrc} />
-                    </a>
-                  )}
+                      <a href={logo.outterLink}>
+                        <img alt={logo.imgAlt} src={logo.imgSrc} />
+                      </a>
+                    )}
                 </Col>
               ) : null}
               <Col className="collapse-close" xs="6">
@@ -216,7 +216,166 @@ function Sidebar(props) {
             </InputGroup>
           </Form>
           {/* Navigation */}
-          <Nav navbar>{createLinks(routes)}</Nav>
+          {/* Divider */}
+          <hr className="my-3" />
+          {/* Heading */}
+          <h6 className="navbar-heading text-muted">Administración</h6>
+          {/* Navigation */}
+          <Nav className="mb-md-3" navbar>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni ni-building text-blue" />
+                Restaurantes
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i className="ni ni ni-books text-blue" />
+                Buffet
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-beer text-blue"></i>
+                Bebidas
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni ni-paper-diploma text-blue" />
+                Especialidades
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni ni-align-center text-blue" />
+                Mesas
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-user text-blue"></i>
+                Empleados
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-users text-blue"></i>
+                Clientes
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-user-plus text-blue"></i>
+                Puestos
+              </NavLink>
+            </NavItem>
+          </Nav>
+          {/* Divider */}
+          <hr className="my-3" />
+          {/* Heading */}
+          <h6 className="navbar-heading text-muted">Proveedores</h6>
+          {/* Navigation */}
+          <Nav className="mb-md-3" navbar>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-tag text-info" />
+                Marcas
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/colors/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-building text-info"></i>
+                Empresas
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+              <i className="ni ni-cart text-info" />
+                Comestibles
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+              <i className="ni ni-archive-2 text-info" />
+                Productos
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-truck text-info"></i>
+                Proovedores
+              </NavLink>
+            </NavItem>
+          </Nav>
+          {/* Divider */}
+          <hr className="my-3" />
+          {/* Heading */}
+          <h6 className="navbar-heading text-muted">Reportes</h6>
+          {/* Navigation */}
+          <Nav className="mb-md-3" navbar>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+              <i class="fa fa-list text-pink" aria-hidden="true"></i>
+                Bitácora
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/colors/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-satisfied text-pink" />
+                Clientes
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-money-coins text-pink" />
+                Facturación
+              </NavLink>
+            </NavItem>
+          </Nav>
+          {/* Divider */}
+          <hr className="my-3" />
+          {/* Heading */}
+          <h6 className="navbar-heading text-muted">Seguridad</h6>
+          {/* Navigation */}
+          <Nav className="mb-md-3" navbar>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/overview/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-circle-08 text-green" />
+                Usuarios
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/colors/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-shop text-green" />
+                Cajas
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/admin/consecutivos">
+                <i className="ni ni-ui-04 text-green" />
+                Consecutivos
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/admin/paises">
+                <i className="ni ni-world text-green" />
+                Países
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-briefcase-24 text-green" />
+                Roles
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
+                <i className="ni ni-ruler-pencil text-green" />
+                Medidas
+              </NavLink>
+            </NavItem>
+          </Nav>
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
@@ -239,14 +398,6 @@ function Sidebar(props) {
               <NavLink href="https://www.creative-tim.com/learning-lab/nextjs/avatar/argon-dashboard?ref=njsad-admin-sidebar">
                 <i className="ni ni-ui-04" />
                 Components
-              </NavLink>
-            </NavItem>
-          </Nav>
-          <Nav className="mb-md-3" navbar>
-            <NavItem className="active-pro active">
-              <NavLink href="https://www.creative-tim.com/product/argon-dashboard-pro-react?ref=njsad-admin-sidebar">
-                <i className="ni ni-spaceship" />
-                Upgrade to PRO
               </NavLink>
             </NavItem>
           </Nav>
