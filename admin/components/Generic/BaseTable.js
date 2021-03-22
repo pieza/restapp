@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
 
-export default function BaseTable({ title, headers, service, ignoreProps }) {
+export default function BaseTable({ title, headers, service, ignoreProps, doEdit = true, doDelete = true, doDetails }) {
   const router = useRouter()
 
   const [data, setData] = useState([]);
@@ -80,8 +80,8 @@ export default function BaseTable({ title, headers, service, ignoreProps }) {
         <thead className="thead-light">
           <tr>
             { headers.map((item, key) => <th scope="col" key={key}>{item.replace('_', ' ')}</th>)}
-            <th>Editar</th>
-            <th>Eliminar</th>
+            { doEdit ? <th>Editar</th> : null }
+            { doDelete ? <th>Eliminar</th> : null }
           </tr>
         </thead>
         <tbody>
@@ -95,7 +95,7 @@ export default function BaseTable({ title, headers, service, ignoreProps }) {
                     </td>
                   )
                 })}
-                <td>
+                { doEdit ? <td>
                   <Button 
                     color="info" 
                     type="button" 
@@ -103,8 +103,17 @@ export default function BaseTable({ title, headers, service, ignoreProps }) {
                     onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
                     Editar
                   </Button>
-                </td>
-                <td>
+                </td> : null }
+                { doDetails ? <td>
+                  <Button 
+                    color="info" 
+                    type="button" 
+                    size="sm"
+                    onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
+                    Ver detalles
+                  </Button>
+                </td> : null }
+                { doDelete ? <td>
                   <Button 
                     color="danger" 
                     type="button" 
@@ -112,7 +121,7 @@ export default function BaseTable({ title, headers, service, ignoreProps }) {
                     onClick={e => destroy(entry._id)}>
                     Eliminar
                   </Button>
-                </td>
+                </td> : null }
               </tr>
             )
           })}

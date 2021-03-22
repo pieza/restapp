@@ -1,10 +1,12 @@
 const Service = require('./service')
 const ConsecutivoService = require("./consecutivo.service")
+const BitacoraService = require("./bitacora.service")
 
 module.exports = class BaseService extends Service {
   constructor(model) { 
     super(model)
     this.consecutivoService = new ConsecutivoService()
+    this.BitacoraService = new BitacoraService()
     this.modelName = model.modelName
   }
 
