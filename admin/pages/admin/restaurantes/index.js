@@ -17,6 +17,7 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Restaurantes() {
   const service = new Service()
+  const headers = ["codigo", "nombre", "activo", "direccion", "aforo", "telefono", "especialidad"]
 
   return (
     <>
@@ -25,7 +26,10 @@ function Restaurantes() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Restaurantes" service={service} />
+            <BaseTable 
+              headers={headers}
+              title="Restaurantes" 
+              service={service} />
           </Col>
         </Row>
         {/* Footer */}

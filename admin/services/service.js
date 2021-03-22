@@ -33,7 +33,11 @@ export default class Service {
   }
 
   async find(filters) {
-    let response = await this.axios.get(this.url)
+    let queryString = filters ? Object.keys(filters).map((key) => {
+      return encodeURIComponent(key) + '=' + encodeURIComponent(filters[key])
+    }).join('&') : ''
+
+    let response = await this.axios.get(this.url + '?' + queryString)
 
     if(!response || response.status != 200) {
       console.error(response)

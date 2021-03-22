@@ -17,6 +17,7 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Paises() {
   const service = new PaisService()
+  const headers = ["nombre", "codigo"]
 
   return (
     <>
@@ -25,7 +26,7 @@ function Paises() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Paises" service={service} />
+            <BaseTable headers={headers} title="Paises" service={service} />
           </Col>
         </Row>
         {/* Footer */}

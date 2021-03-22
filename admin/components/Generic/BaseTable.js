@@ -6,8 +6,10 @@ import {
   CardHeader,
   Table,
   Row,
+  Col,
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
+import FiltersForm from "./FiltersForm";
 
 export default function BaseTable({ title, headers, service, ignoreProps, doEdit = true, doDelete = true, doDetails }) {
   const router = useRouter()
@@ -18,22 +20,13 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
     setData(await service.find())
   }
 
+  const searchCallback = (data) => {
+    setData(data)
+  }
+
   useEffect(async () => {
     fetchData();
   }, []);
-
-  if(!data || data.length == 0) return (<>
-    <Card className="shadow">
-      <CardHeader className="border-0">
-        <Row className="align-items-center">
-          <div className="col">
-            <h3 className="mb-0">No hay datos.</h3>
-          </div>
-        </Row>
-      </CardHeader>
-    </Card>
-  </>)
-
 
   if(!headers || headers.length == 0) {
     headers = []
@@ -65,8 +58,8 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
     }
     
     fetchData();
-  } 
-
+  }
+  console.log(headers)
   return (
     <Card className="shadow">
       <CardHeader className="border-0">
@@ -75,57 +68,64 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
             <h3 className="mb-0">{title}</h3>
           </div>
         </Row>
+        <Row>
+          <FiltersForm headers={headers} callback={searchCallback} service={service}/>
+        </Row>
       </CardHeader>
       <Table className="align-items-center table-flush" responsive>
-        <thead className="thead-light">
-          <tr>
-            { headers.map((item, key) => <th scope="col" key={key}>{item.replace('_', ' ')}</th>)}
-            { doEdit ? <th>Editar</th> : null }
-            { doDelete ? <th>Eliminar</th> : null }
-          </tr>
-        </thead>
-        <tbody>
-          { data.map((entry, entryKey) => {
-            return (
-              <tr key={entryKey}>
-                { headers.map((header, key) => {
-                  return (
-                    <td key={key}>
-                      { getValue(entry[header]) }
-                    </td>
-                  )
-                })}
-                { doEdit ? <td>
-                  <Button 
-                    color="info" 
-                    type="button" 
-                    size="sm"
-                    onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
-                    Editar
-                  </Button>
-                </td> : null }
-                { doDetails ? <td>
-                  <Button 
-                    color="info" 
-                    type="button" 
-                    size="sm"
-                    onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
-                    Ver detalles
-                  </Button>
-                </td> : null }
-                { doDelete ? <td>
-                  <Button 
-                    color="danger" 
-                    type="button" 
-                    size="sm"
-                    onClick={e => destroy(entry._id)}>
-                    Eliminar
-                  </Button>
-                </td> : null }
-              </tr>
-            )
-          })}
-        </tbody>
+        { data && data.length > 0 ? <>
+          <thead className="thead-light">
+            <tr>
+              { headers.map((item, key) => <th scope="col" key={key}>{item.replace('_', ' ')}</th>)}
+              { doEdit ? <th>Editar</th> : null }
+              { doDelete ? <th>Eliminar</th> : null }
+            </tr>
+          </thead>
+          <tbody>
+            { data.map((entry, entryKey) => {
+              return (
+                <tr key={entryKey}>
+                  { headers.map((header, key) => {
+                    return (
+                      <td key={key}>
+                        { getValue(entry[header]) }
+                      </td>
+                    )
+                  })}
+                  { doEdit ? <td>
+                    <Button 
+                      color="info" 
+                      type="button" 
+                      size="sm"
+                      onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
+                      Editar
+                    </Button>
+                  </td> : null }
+                  { doDetails ? <td>
+                    <Button 
+                      color="info" 
+                      type="button" 
+                      size="sm"
+                      onClick={e => router.replace(`${router.pathname}/${entry._id}`)}>
+                      Ver detalles
+                    </Button>
+                  </td> : null }
+                  { doDelete ? <td>
+                    <Button 
+                      color="danger" 
+                      type="button" 
+                      size="sm"
+                      onClick={e => destroy(entry._id)}>
+                      Eliminar
+                    </Button>
+                  </td> : <Col>
+                    No hay datos.
+                  </Col> }
+                </tr>
+              )
+            })}
+          </tbody>
+        </> : null }
       </Table>
     </Card>
   )
