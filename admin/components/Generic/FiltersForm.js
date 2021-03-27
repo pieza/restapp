@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, FormGroup, Input, Card, Col, Row, Button, CardBody } from "reactstrap";
+import { Form, FormGroup, Input, Card, Col, Row, Button, CardBody, Label } from "reactstrap";
 
 export default function FiltersForm({ headers, callback, service }) {
   const [filters, setFilters] = useState({})
@@ -20,15 +20,28 @@ export default function FiltersForm({ headers, callback, service }) {
               <Row>
                 { headers.map((header, key) => 
                   <Col lg="4" key={key}>
-                    <FormGroup>
-                      <Input
-                        size="sm"
-                        placeholder={header}
-                        className="form-contrsol-alternative"
-                        type="text"
-                        onChange={e => {setFilters({...filters, [header]: e.target.value })}}
-                      />
-                    </FormGroup>
+                    { header == 'activo' ?
+                      <FormGroup check>
+                        <Label>
+                          <Input
+                            className="form-control-alternative"
+                            type="checkbox"
+                            checked={filters[header]}
+                            onChange={e => setFilters({ ...filters, [header]: e.target.checked })}
+                          /> {header}
+                        </Label>
+                      </FormGroup>  
+                      :
+                      <FormGroup>
+                        <Input
+                          size="sm"
+                          placeholder={header}
+                          className="form-contrsol-alternative"
+                          type="text"
+                          onChange={e => {setFilters({...filters, [header]: e.target.value })}}
+                        />
+                      </FormGroup> 
+                    }
                   </Col>
                 )}
                 

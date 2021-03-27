@@ -1,6 +1,9 @@
+import React, { useEffect, useState } from 'react'
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
+import MedidasComboBox from '../ComboBoxes/MedidasComboBox';
 
-export default function RestauranteForm({ item, setItem }) {
+
+export default function BuffetForm({ item, setItem }) {
   return (
     <>
       <Row>
@@ -29,24 +32,25 @@ export default function RestauranteForm({ item, setItem }) {
       </Row>
       <Row>
         <Col lg="6">
-          <FormGroup>
-            <label>Aforo</label>
+          <MedidasComboBox item={item} setItem={setItem}/>
+          {/* <FormGroup>
+            <label>Medida</label>
             <Input
               className="form-contrsol-alternative"
+              type="text"
+              onChange={e => setItem({ ...item, medida: e.target.value })}
+              value={item.medida}
+            />
+          </FormGroup> */}
+        </Col>
+        <Col lg="6">
+          <FormGroup>
+            <label>Precio</label>
+            <Input
+              className="form-control-alternative"
               type="number"
-              onChange={e => setItem({ ...item, aforo: e.target.value })}
-              value={item.aforo}
-            />
-          </FormGroup>
-        </Col>
-        <Col lg="6">
-          <FormGroup>
-            <label>Teléfono</label>
-            <Input
-              className="form-control-alternative"
-              type="text"
-              onChange={e => setItem({ ...item, telefono: e.target.value })}
-              value={item.telefono}
+              onChange={e => setItem({ ...item, precio: e.target.value })}
+              value={item.precio}
             />
           </FormGroup>
         </Col>
@@ -54,41 +58,28 @@ export default function RestauranteForm({ item, setItem }) {
       <Row>
         <Col lg="6">
           <FormGroup>
-            <label>Dirección</label>
+            <label>Tipo</label>
             <Input
               className="form-control-alternative"
               type="text"
-              onChange={e => setItem({ ...item, direccion: e.target.value })}
-              value={item.direccion}
+              onChange={e => setItem({ ...item, tipo: e.target.value })}
+              value={item.tipo}
             />
           </FormGroup>
         </Col>
         <Col lg="6">
           <FormGroup>
-            <label>Especialidad</label>
+            <label>Imagen</label>
             <Input
               className="form-contrsol-alternative"
               type="text"
-              onChange={e => setItem({ ...item, especialidad: e.target.value })}
-              value={item.especialidad}
+              onChange={e => setItem({ ...item, imagen: e.target.value })}
+              value={item.imagen}
             />
           </FormGroup>
         </Col>
       </Row>
-      <Row>
-        <Col lg="6">
-          <FormGroup check>
-            <Label>
-            <Input
-              className="form-control-alternative"
-              type="checkbox"
-              checked={item.activo}
-              onChange={e => setItem({ ...item, activo: e.target.checked })}
-            /> Activo
-            </Label>
-          </FormGroup>
-        </Col>
-      </Row>
+     
     </>
   )
 }

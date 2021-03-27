@@ -14,6 +14,17 @@ export default function PaisForm({ item, setItem }) {
       <Row>
         <Col lg="6">
           <FormGroup>
+            <label>Codigo</label>
+            <Input
+              className="form-control-alternative"
+              type="text"
+              value={item.codigo}
+              disabled={true}
+            />
+          </FormGroup>
+        </Col>
+        <Col lg="6">
+          <FormGroup>
             <label>Nombre</label>
             <Input
               className="form-contrsol-alternative"
