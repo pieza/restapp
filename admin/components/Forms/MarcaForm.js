@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
-import MedidasComboBox from '../ComboBoxes/MedidasComboBox';
+import PaisesComboBox from '../ComboBoxes/PaisesComboBox';
 
-export default function BuffetForm({ item, setItem }) {
+export default function MarcaForm({ item, setItem }) {
   return (
     <>
       <Row>
@@ -31,45 +31,44 @@ export default function BuffetForm({ item, setItem }) {
       </Row>
       <Row>
         <Col lg="6">
-          <MedidasComboBox item={item} setItem={setItem}/>
-        </Col>
-        <Col lg="6">
           <FormGroup>
-            <label>Precio</label>
+            <label>Descripcion</label>
             <Input
               className="form-control-alternative"
-              type="number"
-              onChange={e => setItem({ ...item, precio: e.target.value })}
-              value={item.precio}
+              type="text"
+              onChange={e => setItem({ ...item, descripcion: e.target.value })}
+              value={item.descripcion}
             />
           </FormGroup>
+        </Col>
+        <Col lg="6">
+          <PaisesComboBox item={item} setItem={setItem}/>
         </Col>
       </Row>
       <Row>
         <Col lg="6">
           <FormGroup>
-            <label>Tipo</label>
+            <label>Empresa</label>
             <Input
               className="form-control-alternative"
               type="text"
-              onChange={e => setItem({ ...item, tipo: e.target.value })}
-              value={item.tipo}
+              onChange={e => setItem({ ...item, empresa: e.target.value })}
+              value={item.empresa}
             />
           </FormGroup>
         </Col>
         <Col lg="6">
           <FormGroup>
-            <label>Imagen</label>
+            <label>Telefono</label>
             <Input
               className="form-contrsol-alternative"
               type="text"
-              onChange={e => setItem({ ...item, imagen: e.target.value })}
-              value={item.imagen}
+              onChange={e => setItem({ ...item, telefono: e.target.value })}
+              value={item.telefono}
             />
           </FormGroup>
         </Col>
       </Row>
-     
     </>
   )
 }
