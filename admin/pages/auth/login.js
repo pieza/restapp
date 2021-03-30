@@ -29,11 +29,13 @@ function Login() {
     const requestParams = {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': 'Set-Cookie',
+        'Content-Type': 'application/json'
       },
+      withCredentials: true,
+      credentials: 'include',
       body: JSON.stringify(loginForm),
     };
+    await fetch(loginUrl, requestParams);
   };
 
   return (
