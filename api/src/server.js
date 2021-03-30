@@ -14,7 +14,7 @@ const handleError = require('./utils/error-handler');
 app.set('port', process.env.PORT || 3000);
 
 // middlewares
-app.use(cors());
+app.use(cors({credentials: true, origin:true}));
 app.use(morgan('dev'));
 app.use(express.json());
 // Express Session Middleware
