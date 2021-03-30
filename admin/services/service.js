@@ -1,5 +1,5 @@
 import axios from 'axios';
-import AlertUtil from '../utils/alert';
+//import AlertUtil from '../utils/alert';
 
 export default class Service {
   constructor(route) {
@@ -15,7 +15,7 @@ export default class Service {
 
     if(!response || response.status != 200) {
       console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+      //AlertUtil.error('Ha ocurrido un error.')
     }
     
     return response.data
@@ -26,7 +26,7 @@ export default class Service {
 
     if(!response || response.status != 200) {
       console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+      //AlertUtil.error('Ha ocurrido un error.')
     }
     
     return response.data
@@ -41,7 +41,7 @@ export default class Service {
 
     if(!response || response.status != 200) {
       console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+      //AlertUtil.error('Ha ocurrido un error.')
     }
 
     return response.data
@@ -53,7 +53,7 @@ export default class Service {
 
     if(!response || response.status != 200) {
       console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+      //AlertUtil.error('Ha ocurrido un error.')
     }
 
     return response.data
@@ -65,7 +65,7 @@ export default class Service {
 
     if(!response || response.status != 200) {
       console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+      //AlertUtil.error('Ha ocurrido un error.')
     }
 
     return response.data

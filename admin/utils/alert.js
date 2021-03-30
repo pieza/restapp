@@ -14,6 +14,7 @@ export default class AlertUtil {
   }
 
   static error(message) { 
+    console.log(message)
     return Swal.fire('Error', message, 'error')
   }
 
