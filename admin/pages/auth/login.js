@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from 'react';
 
 // reactstrap components
 import {
@@ -14,11 +14,28 @@ import {
   InputGroup,
   Row,
   Col,
-} from "reactstrap";
+} from 'reactstrap';
 // layout for this page
-import Auth from "layouts/Auth.js";
+import Auth from 'layouts/Auth.js';
+
+/** Login Component in Project
+* We perform Login operations from here */
 
 function Login() {
+  const [loginForm, setLoginForm] = useState({ nickname: '', password: '' });
+  /** Executes Login. Through loginForm information (nickname and password), sends a request to sign in API endpoint.  */
+  const onLogin = async () => {
+    const loginUrl = 'http://localhost:3000/api/v1/signin';
+    const requestParams = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Headers': 'Set-Cookie',
+      },
+      body: JSON.stringify(loginForm),
+    };
+  };
+
   return (
     <>
       <Col lg="5" md="7">
@@ -27,7 +44,7 @@ function Login() {
             <div className="text-center text-muted mb-4">
               <small>Sign In</small>
             </div>
-            <Form role="form">
+            <Form>
               <FormGroup className="mb-3">
                 <InputGroup className="input-group-alternative">
                   <InputGroupAddon addonType="prepend">
@@ -39,6 +56,7 @@ function Login() {
                     placeholder="Usuario"
                     type="username"
                     autoComplete="new-email"
+                    onChange={(input) => setLoginForm({ ...loginForm, nickname: input.target.value })}
                   />
                 </InputGroup>
               </FormGroup>
@@ -53,11 +71,12 @@ function Login() {
                     placeholder="Password"
                     type="password"
                     autoComplete="new-password"
+                    onChange={(input) => setLoginForm({ ...loginForm, password: input.target.value })}
                   />
                 </InputGroup>
               </FormGroup>
               <div className="text-center">
-                <Button className="my-4" color="primary" type="button">Ingresar</Button>
+                <Button className="my-4" color="primary" type="button" onClick={onLogin}>Ingresar</Button>
               </div>
             </Form>
           </CardBody>
