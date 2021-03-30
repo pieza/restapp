@@ -11,7 +11,7 @@ const ProductoSchema = new Schema({
   cantidad: { type: String },
   marca: { type: ObjectId, ref: 'Marca' },
   restaurante: { type: ObjectId, ref: 'Restaurante' },
-  liquido: { type: Boolean },
+  es_liquido: { type: Boolean },
   medida: { type: ObjectId, ref: 'Medida' },
   precio: { type: Number },
 });

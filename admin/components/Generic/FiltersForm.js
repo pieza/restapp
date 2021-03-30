@@ -20,7 +20,7 @@ export default function FiltersForm({ headers, callback, service }) {
               <Row>
                 { headers.map((header, key) => 
                   <Col lg="4" key={key}>
-                    { header == 'activo' ?
+                    { header == 'activo' || header == 'es_liquido' ?
                       <FormGroup check>
                         <Label>
                           <Input
@@ -28,14 +28,14 @@ export default function FiltersForm({ headers, callback, service }) {
                             type="checkbox"
                             checked={filters[header]}
                             onChange={e => setFilters({ ...filters, [header]: e.target.checked })}
-                          /> {header}
+                          /> {header.replace('_', ' ')}
                         </Label>
                       </FormGroup>  
                       :
                       <FormGroup>
                         <Input
                           size="sm"
-                          placeholder={header}
+                          placeholder={header.replace('_', ' ')}
                           className="form-contrsol-alternative"
                           type="text"
                           onChange={e => {setFilters({...filters, [header]: e.target.value })}}
