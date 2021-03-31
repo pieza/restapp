@@ -4,43 +4,46 @@ import AlertUtil from '../utils/alert';
 export default class Service {
   constructor(route) {
     this.axios = axios;
-    let host = 'http://localhost'//process.env.API_URL;
-    let basePath = '/api/v1' //process.env.API_PATH;
-    let port = 5001 //process.env.API_PORT;
-    this.url = `${host}:${port}${basePath}/${route}`
+    const host = 'http://localhost'; // process.env.API_URL;
+    const basePath = '/api/v1'; // process.env.API_PATH;
+    const port = 5001; // process.env.API_PORT;
+    this.initialParams = {
+      withCredentials: true,
+      credentials: 'include',
+    };
+    this.url = `${host}:${port}${basePath}/${route}`;
   }
 
   async create(object) {
-    let response = await this.axios.post(this.url, object)
+    const response = await this.axios.post(this.url, object, this.initialParams);
 
-    if(!response || response.status != 200) {
-      console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+    if (!response || response.status != 200) {
+      console.error(response);
+      AlertUtil.error('Ha ocurrido un error.');
     }
-    
-    return response.data
+
+    return response.data;
   }
 
   async find(filters) {
-    let response = await this.axios.get(this.url)
+    const response = await this.axios.get(this.url, this.initialParams);
 
-    if(!response || response.status != 200) {
-      console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+    if (!response || response.status != 200) {
+      console.error(response);
+      AlertUtil.error('Ha ocurrido un error.');
     }
 
-    return response.data
+    return response.data;
   }
 
   async delete(id) {
-    let response = await this.axios.delete(`${this.url}/${id}`)
+    const response = await this.axios.delete(`${this.url}/${id}`, this.initialParams);
 
-    if(!response || response.status != 200) {
-      console.error(response)
-      AlertUtil.error('Ha ocurrido un error.')
+    if (!response || response.status != 200) {
+      console.error(response);
+      AlertUtil.error('Ha ocurrido un error.');
     }
 
-    return response.data
+    return response.data;
   }
-
 }

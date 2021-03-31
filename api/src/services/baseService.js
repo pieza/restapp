@@ -1,4 +1,4 @@
-const Service = require('./service')
+const Service = require('./Service')
 const ConsecutivoService = require("./consecutivo.service")
 
 module.exports = class BaseService extends Service {

@@ -24,7 +24,7 @@ router.post('/signin', (req, res, next) => {
     req.logIn(usuario, (err) => {
       if (err) return res.status(501).json(err);
     });
-    return res.status(200).json(usuario);
+    return res.send(200);
   })(req, res, next);
 });
 
