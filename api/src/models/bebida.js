@@ -12,7 +12,7 @@ const BebidaSchema = new Schema({
   marca: { type: ObjectId, ref: 'Marca' },
   restaurante: { type: ObjectId, ref: 'Restaurante' },
   nacionalidad: { type: ObjectId, ref: 'Pais' },
-  tipo: { type: Boolean },
+  tipo: { type: String },
   precio_unitario: { type: Number },
   precio_botella: { type: Number },
 });

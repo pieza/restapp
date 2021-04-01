@@ -17,6 +17,7 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Consecutivos() {
   const service = new Service()
+  const headers = ["descripcion", "consecutivo", "posee_prefijo", "prefijo"]
 
   return (
     <>
@@ -25,7 +26,7 @@ function Consecutivos() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Consecutivos" service={service} />
+            <BaseTable headers={headers} title="Consecutivos" service={service} />
           </Col>
         </Row>
         {/* Footer */}

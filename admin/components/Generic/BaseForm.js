@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import React from "react";
 import { 
   Button,
@@ -11,12 +12,19 @@ import {
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
 
-export default function BaseForm({ children, title, item, callback }) {
+export default function BaseForm({ children, title, item, callback, disable }) {
+  const router = useRouter()
 
   const handleButton = async (e) => {
     e.preventDefault();
-    if(await callback(item)) {
-      AlertUtil.success('Elemento guardado correctamente!')
+
+    let result = await callback(item)
+
+    if(result) {
+      await AlertUtil.success('Elemento guardado correctamente!')
+      let routes = router.pathname.split('/')
+      routes.pop()
+      router.push(`${routes.join('/')}`)
     }
   }
 
@@ -36,7 +44,7 @@ export default function BaseForm({ children, title, item, callback }) {
               <Form>
                 <div className="pl-lg-4">
                   { children }
-                  <Row>
+                  { !disable ? <Row>
                     <Col lg="6">
                       <Button
                         className="mr-4"
@@ -47,7 +55,7 @@ export default function BaseForm({ children, title, item, callback }) {
                         Guardar
                       </Button>
                     </Col>
-                  </Row>
+                  </Row> : null }
                 </div>
               </Form>
             </CardBody>

@@ -14,6 +14,7 @@ import Admin from "layouts/Admin.js";
 import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
 import Service from "../../../services/pais.service";
+import PaisForm from "../../../components/Forms/PaisForm";
 
 function CrearPaises() {
   const service = new Service()
@@ -21,25 +22,14 @@ function CrearPaises() {
   const [item, setItem] = useState({})
 
   const callback = async (data) => {
-    await service.create(data)
+    return await service.create(data)
   }
 
   return (
     <>
       <UserHeader />
       <BaseForm title="Crear Paises" item={item} callback={callback}>
-        <Row>
-          <Col lg="6">
-            <FormGroup>
-              <label>Nombre</label>
-              <Input
-                className="form-contrsol-alternative"
-                type="text"
-                onChange={e => setItem({ ...item, nombre: e.target.value })}
-              />
-            </FormGroup>
-          </Col>
-        </Row>
+        <PaisForm item={item}  setItem={setItem}/>
       </BaseForm>
     </>
   );
