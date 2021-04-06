@@ -1,4 +1,6 @@
-export default function ConsecutivoForm() {
+import { Col, FormGroup, Input, Label, Row } from "reactstrap";
+
+export default function ConsecutivoForm({ item, setItem }) {
   return (
     <>
       <Row>
@@ -9,6 +11,7 @@ export default function ConsecutivoForm() {
               className="form-contrsol-alternative"
               type="text"
               onChange={e => setItem({ ...item, descripcion: e.target.value })}
+              value={item.descripcion}
             />
           </FormGroup>
         </Col>
@@ -19,6 +22,7 @@ export default function ConsecutivoForm() {
               className="form-control-alternative"
               type="number"
               onChange={e => setItem({ ...item, consecutivo: e.target.value })}
+              value={item.consecutivo}
             />
           </FormGroup>
         </Col>
@@ -44,6 +48,7 @@ export default function ConsecutivoForm() {
                 className="form-control-alternative"
                 type="text"
                 onChange={e => setItem({ ...item, prefijo: e.target.value })}
+                value={item.prefijo}
               />
             </FormGroup>
           </Col>

@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import Service from "../../services/auth.service";
+import { useRouter } from 'next/router';
+
 
 // reactstrap components
 import {
@@ -17,19 +20,20 @@ import {
 } from 'reactstrap';
 // layout for this page
 import Auth from 'layouts/Auth.js';
-import axios from 'axios';
+import AlertUtil from '../../utils/alert';
 
 /** Login Component in Project
  * We perform Login operations from here */
 
 function Login() {
+  const service = new Service();
+  const router = useRouter();
   const signInAttributes = [
     { name: 'nickname', icon: 'ni ni-circle-08' },
     { name: 'password', icon: 'ni ni-lock-circle-open' },
   ];
   const [loginForm, setLoginForm] = useState({ nickname: '', password: '' });
-  const loginUrl = 'http://localhost:3000/api/v1/signin';
-  const params = { withCredentials: true, credentials: 'include' };
+
   /** Renders All Sign In Forms.
    * Takes an array of signInAttributes and returns an array of signInForms
    * @param {Object[]} */
@@ -50,7 +54,17 @@ function Login() {
   /** Executes Login.
    * Through loginForm information (nickname and password),
    * sends a request to sign in API endpoint.  */
-  const onLogin = () => axios.post(loginUrl, loginForm, params);
+  const onLogin = async () => { 
+    const response = await service.signin(loginForm) 
+
+    if (!response || response.status > 300) {
+      console.error(response);
+      AlertUtil.error('Usuario o contraseña incorrectos');
+    } else {
+      await AlertUtil.success('Inicio exitoso!');
+      router.push('/admin/dashboard')
+    }
+  }
   return (
     <>
       <Col lg="5" md="7">

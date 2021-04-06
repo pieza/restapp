@@ -17,14 +17,8 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Paises() {
   const service = new PaisService()
-  const callback = (model) => {
-    service.create(model)
-  }
+  const headers = ["codigo", "nombre"]
 
-  const [data, setData] = useState([]);
-  useEffect(async () => {
-    setData(await service.find())
-  }, []);
   return (
     <>
       <UserHeader />
@@ -32,7 +26,7 @@ function Paises() {
       <Container className="mt--7" fluid>
         <Row>
           <Col  xl="12">
-            <BaseTable title="Paises" data={data} service={service} />
+            <BaseTable headers={headers} title="Paises" service={service} />
           </Col>
         </Row>
         {/* Footer */}

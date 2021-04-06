@@ -6,14 +6,17 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
+const UsuarioService = require('../services/usuario.service')
+
 // Models
 const Usuario = require('../models/usuario.js');
 
 // [POST] Sign Up Usuario
-router.post('/signup', (req, res) => {
-  const usuario = new Usuario(req.body);
-  usuario.save().then(() => res.status(201).send())
+router.post('/signup', async (req, res) => {
+  const service = new UsuarioService()
+  const usuario = await service.create(req.body)
     .catch((e) => res.status(500).send({ error: e.message }));
+  return res.status(201).send()
 });
 
 // [POST] Login Usuario

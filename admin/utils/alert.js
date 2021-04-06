@@ -6,15 +6,16 @@ import Swal from 'sweetalert2';
 export default class AlertUtil {
 
   static info(message) {
-    Swal.fire(message)
+    return Swal.fire(message)
   }
 
   static success(message) {
-    Swal.fire('Completado!', message, 'success')
+    return Swal.fire('Completado!', message, 'success')
   }
 
   static error(message) { 
-    Swal.fire('Error', message, 'error')
+    console.log(message)
+    return Swal.fire('Error', message, 'error')
   }
 
   static handleError(error) {
