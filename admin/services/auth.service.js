@@ -22,4 +22,14 @@ export default class AuthService {
     const response = await this.axios.post(`${this.url}/signin`, object, this.initialParams);
     return response;
   }
+
+  async current() {
+    const response = await this.axios.get(`${this.url}/current`, this.initialParams);
+    return response.data;
+  }
+
+  async logout() {
+    const response = await this.axios.get(`${this.url}/logout`, this.initialParams);
+    return response;
+  }
 }
