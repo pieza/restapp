@@ -6,7 +6,7 @@ export default class Service {
     this.axios = axios;
     const host = 'http://localhost'; // process.env.API_URL;
     const basePath = '/api/v1'; // process.env.API_PATH;
-    const port = 5001; // process.env.API_PORT;
+    const port = 5000; // process.env.API_PORT;
     this.initialParams = {
       withCredentials: true,
       credentials: 'include',

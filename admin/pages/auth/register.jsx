@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { useRouter } from 'next/router';
 
 // reactstrap components
 import {
@@ -16,10 +16,12 @@ import {
 } from 'reactstrap';
 // layout for this page
 import Auth from 'layouts/Auth.js';
-import Service from "../../services/usuario.service";
+import Service from "../../services/auth.service";
+import AlertUtil from '../../utils/alert';
 
 function Register() {
 	const service = new Service();
+  const router = useRouter();
   const signUpAttributes = [
     { name: 'nombre', icon: 'ni ni-hat-3' },
     { name: 'apellidos', icon: 'ni ni-diamond' },
@@ -31,9 +33,18 @@ function Register() {
   const [signUpForm, setSignUpForm] = useState(
     signUpAttributes.reduce((object, it) => (object[it.name] = '', object), {})
   );
-  const signUpUrl = 'http://localhost:3000/api/v1/signup';
-  const params = { withCredentials: true, credentials: 'include' };
-  const onSignUp = () => service.create(signUpForm)
+
+  const onSignUp = async () => {
+    const response = await service.signup(signUpForm)
+
+    if (!response || response.status > 300) {
+      console.error(response);
+      AlertUtil.error('Ha ocurrido un error.');
+    } else {
+      await AlertUtil.success('Usuario registrado correctamente!');
+      router.push('/auth/login')
+    }
+  }
   /** Renders All Sign Up Forms.
    * Takes an array of signUpAttributes and returns an array of signUpForms
    * @param {Object[]} */
