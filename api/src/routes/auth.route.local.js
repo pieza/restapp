@@ -36,4 +36,9 @@ router.get('/logout', (req, res) => {
   req.logout();
   res.send('');
 });
+
+router.get("/current", (req, res) => {
+  return res.json(req.user)
+});
+
 module.exports = router;
