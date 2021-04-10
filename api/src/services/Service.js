@@ -14,6 +14,8 @@ module.exports = class Service {
      * Mongo db model schema.
      */
     this.model = model
+
+    this.modelName = model.modelName
   }
 
   /**
@@ -59,7 +61,8 @@ module.exports = class Service {
    * @param {object} object 
    */
   async update(id, object) {
-    return this.model.updateOne({ _id: id }, object )
+    await this.model.updateOne({ _id: id }, object )
+    return object
   }
 
   /**

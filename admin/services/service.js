@@ -26,7 +26,7 @@ export default class Service {
   }
 
   async update(id, object) {
-    let response = await this.axios.put(`${this.url}/${id}`, object)
+    let response = await this.axios.put(`${this.url}/${id}`, object, this.initialParams)
 
     if(!response || response.status != 200) {
       console.error(response)
@@ -37,7 +37,8 @@ export default class Service {
   }
 
   async find(filters) {
-    const response = await this.axios.get(this.url, this.initialParams);
+    let params =  new URLSearchParams(filters).toString()
+    const response = await this.axios.get(`${this.url}?${params}`, this.initialParams);
 
     if (!response || response.status != 200) {
       console.error(response);
@@ -49,7 +50,7 @@ export default class Service {
 
 
   async findById(id) {
-    let response = await this.axios.get(`${this.url}/${id}`)
+    let response = await this.axios.get(`${this.url}/${id}`, this.initialParams)
 
     if(!response || response.status != 200) {
       console.error(response)

@@ -8,6 +8,7 @@ const ProductoSchema = new Schema({
   codigo: { type: String },
   nombre: { type: String },
   descripcion: { type: String },
+  tipo: { type: String },
   cantidad: { type: String },
   marca: { type: ObjectId, ref: 'Marca' },
   restaurante: { type: ObjectId, ref: 'Restaurante' },

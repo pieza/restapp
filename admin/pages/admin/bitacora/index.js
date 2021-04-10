@@ -16,7 +16,7 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Consecutivos() {
   const service = new Service()
-  const headers = []
+  const headers = ["codigo", "tipo", "descripcion", "fecha", "usuario"]
 
   return (
     <>

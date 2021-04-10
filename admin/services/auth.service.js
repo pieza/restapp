@@ -1,6 +1,9 @@
 import axios from 'axios';
 
 export default class AuthService {
+
+  static _instance
+
   constructor() {
     this.axios = axios;
     const host = 'http://localhost'; // process.env.API_URL;
@@ -13,6 +16,11 @@ export default class AuthService {
     this.url = `${host}:${port}${basePath}`;
   }
 
+  static getInstance() {
+    if(this._instance == null) this._instance = new AuthService()
+    return this._instance
+  }
+
   async signup(object) {
     const response = await this.axios.post(`${this.url}/signup`, object, this.initialParams);
     return response;
@@ -23,9 +31,13 @@ export default class AuthService {
     return response;
   }
 
-  async current() {
+  async _current() {
     const response = await this.axios.get(`${this.url}/current`, this.initialParams);
     return response.data;
+  }
+
+  static async current() {
+    return await this.getInstance()._current()
   }
 
   async logout() {

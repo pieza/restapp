@@ -45,6 +45,19 @@ export default function MarcaForm({ item, setItem }) {
         </Col>
         <Col lg="6">
           <FormGroup>
+            <label>Tipo</label>
+            <Input
+              className="form-control-alternative"
+              type="text"
+              onChange={e => setItem({ ...item, tipo: e.target.value })}
+              value={item.tipo}
+            />
+          </FormGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <FormGroup>
             <label>Cantidad</label>
             <Input
               className="form-control-alternative"
@@ -54,19 +67,19 @@ export default function MarcaForm({ item, setItem }) {
             />
           </FormGroup>
         </Col>
-      </Row>
-      <Row>
         <Col lg="6">
           <MarcasComboBox item={item} setItem={setItem}/>
         </Col>
-        <Col lg="6">
-          <RestaurantesComboBox item={item} setItem={setItem}/>
-        </Col>
       </Row>
       <Row>
         <Col lg="6">
+          <RestaurantesComboBox item={item} setItem={setItem}/>
+        </Col>
+        <Col lg="6">
           <MedidasComboBox item={item} setItem={setItem}/>
         </Col>
+      </Row>
+      <Row>
         <Col lg="6">
           <FormGroup check>
             <Label>
@@ -79,8 +92,6 @@ export default function MarcaForm({ item, setItem }) {
             </Label>
           </FormGroup>
         </Col>
-      </Row>
-      <Row>
         <Col lg="6">
           <FormGroup>
             <label>Precio</label>
