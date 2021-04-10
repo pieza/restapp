@@ -1,7 +1,9 @@
+import { useEffect } from "react";
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
-import RolesComboBox from '../ComboBoxes/RolesComboBox';
+import RolesMultiSelect from '../MultiSelects/RolesMultiSelect';
 
 export default function UsuarioForm({ item, setItem }) {
+  
   return (
     <>
       <Row>
@@ -89,7 +91,7 @@ export default function UsuarioForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
-          XD
+          <RolesMultiSelect item={item} setItem={setItem}/>
         </Col>
       </Row>
     </>

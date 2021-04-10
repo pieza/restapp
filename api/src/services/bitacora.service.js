@@ -19,12 +19,13 @@ module.exports = class BitacoraService extends Service {
     return await super.create(object)
   }
 
-  async log(object) {
+  async log(tipo, descripcion, detalle, usuario) {
     let fecha = new Date()
-    let usuario = null
 
     return await this.create({
-      ...object,
+      tipo,
+      descripcion,
+      detalle,
       fecha,
       usuario
     })

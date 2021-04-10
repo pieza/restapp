@@ -33,9 +33,8 @@ function AdminNavbar({ brandText }) {
   }
 
   useEffect(async () => {
-    let _user = await auth.current()
+    let _user = await AuthService.current()
     if(_user) setUser(_user)
-    else router.push('/auth/login')
   }, [])
 
   return (

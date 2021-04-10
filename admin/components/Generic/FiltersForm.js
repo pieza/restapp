@@ -6,7 +6,7 @@ export default function FiltersForm({ headers, callback, service }) {
 
   const onSearchClick = async (e) => {
     e.preventDefault();
-    console.log('XD', service)
+    console.log('XD', filters)
     const data = await service.find(filters)
     callback(data);
   }

@@ -7,7 +7,6 @@ module.exports = class BaseService extends Service {
     super(model)
     this.consecutivoService = new ConsecutivoService()
     this.BitacoraService = new BitacoraService()
-    this.modelName = model.modelName
   }
 
   /**

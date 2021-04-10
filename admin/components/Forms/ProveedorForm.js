@@ -1,5 +1,6 @@
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
 import ProductosComboBox from '../ComboBoxes/ProductosComboBox';
+import ProductosMultiSelect from "../MultiSelects/ProductosMultiSelect";
 
 export default function PuestoForm({ item, setItem }) {
   return (
@@ -113,7 +114,7 @@ export default function PuestoForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
-          <p>TODO: Pase de productos</p>
+          <ProductosMultiSelect item={item} setItem={setItem}/>
         </Col>
       </Row>
       <Row>

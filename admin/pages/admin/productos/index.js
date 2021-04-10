@@ -17,7 +17,7 @@ import BaseTable from "../../../components/Generic/BaseTable";
 
 function Productos() {
   const service = new Service()
-  const headers = ["codigo", "nombre", "descripcion", "cantidad", "marca", "restaurante", "es_liquido", "medida", "precio"]
+  const headers = ["codigo", "nombre", "descripcion", "tipo", "cantidad", "es_liquido", "medida", "precio"]
 
   return (
     <>

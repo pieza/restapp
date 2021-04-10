@@ -1,5 +1,6 @@
 const express = require('express')
 const {ensureAuthenticated} = require('../auth');
+const BitacoraService = require('../services/bitacora.service');
 
 /**
  * Base router class, contains the base CRUD endpoints 
@@ -31,11 +32,16 @@ module.exports = class Route {
     this.service = service
 
     /**
+     * Service to log database transactions.
+     */
+    this.bitacora = new BitacoraService()
+
+    /**
      * GET /
      * 
      * Return a list of entries filtered.
      */
-    this.router.get(this.path, ensureAuthenticated, async (req, res, next) => {
+    this.router.get(this.path, async (req, res, next) => {
       try {
         let filters = req.query ? req.query : {}
         let result = await this.service.find(filters)
@@ -51,7 +57,8 @@ module.exports = class Route {
      * 
      * Return one object by the model id.
      */
-    this.router.get(`${this.path}/:id`,ensureAuthenticated, async (req, res, next) => {
+    this.router.get(`${this.path}/:id`
+    , async (req, res, next) => {
       try {
         const id = req.params.id
         let result = await this.service.findById(id)
@@ -70,7 +77,7 @@ module.exports = class Route {
     this.router.post(this.path, ensureAuthenticated, async (req, res, next) => {
       try {
         let object = await this.service.create(req.body)
-
+        this.bitacora.log(this.service.modelName, "INSERT", object, req.user._id)
         return res.status(200).json(object)
       } catch (error) {
         next(error)
@@ -86,7 +93,7 @@ module.exports = class Route {
       try {
         const id = req.params.id
         let object = await this.service.update(id, req.body)
-        
+        this.bitacora.log(this.service.modelName, "UPDATE", object, req.user._id)
         return res.status(200).json(object)
       } catch (error) {
         next(error)
@@ -98,11 +105,11 @@ module.exports = class Route {
      * 
      * Deletes an object in the database and return the result.
      */
-    this.router.delete(`${this.path}/:id`, async (req, res, next) => {
+    this.router.delete(`${this.path}/:id`, ensureAuthenticated, async (req, res, next) => {
       try {
         const id = req.params.id
         let object = await this.service.delete(id, req.body)
-        
+        this.bitacora.log(this.service.modelName, "DELETE", object, req.user._id)
         return res.status(200).json(object)
       } catch (error) {
         next(error)

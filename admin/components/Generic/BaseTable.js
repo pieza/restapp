@@ -77,6 +77,7 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
           <thead className="thead-light">
             <tr>
               { headers.map((item, key) => <th scope="col" key={key}>{item.replace('_', ' ')}</th>)}
+              { doDetails ? <th>Ver detalles</th> : null }
               { doEdit ? <th>Editar</th> : null }
               { doDelete ? <th>Eliminar</th> : null }
             </tr>
@@ -118,14 +119,12 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
                       onClick={e => destroy(entry._id)}>
                       Eliminar
                     </Button>
-                  </td> : <Col>
-                    No hay datos.
-                  </Col> }
+                  </td> : null }
                 </tr>
               )
             })}
           </tbody>
-        </> : null }
+        </> : <Col>No hay datos.</Col> }
       </Table>
     </Card>
   )
