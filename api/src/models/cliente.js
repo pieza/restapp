@@ -7,10 +7,10 @@ const { Schema } = mongoose;
 const ClienteSchema = new Schema({
   codigo: { type: String },
   nombre: { type: String },
-  monto: { type: Number },
   fecha_llegada: { type: Date },
   reservacion: {type: Boolean, default: false},
   restaurante: { type: ObjectId, ref: 'Restaurante' },
+  mesa: { type: ObjectId, ref: 'Restaurante' },
   barra: { type: Boolean, default: false },
 });
 
