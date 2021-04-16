@@ -5,8 +5,8 @@ import Admin from "layouts/Admin.js";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
-import Service from "../../../services/caja.service";
-import CajaForm from "../../../components/Forms/CajaForm";
+import Service from "../../../services/mesa.service";
+import MesaForm from "../../../components/Forms/MesaForm";
 
 export async function getStaticProps({ params }) {
   const service = new Service()
@@ -28,7 +28,7 @@ export async function getStaticPaths() {
   return { paths, fallback: false }
 }
 
-function EditarCajas({ data }) {
+function EditarMesas({ data }) {
   const service = new Service()
   const [item, setItem] = useState(data)
 
@@ -39,13 +39,13 @@ function EditarCajas({ data }) {
   return (
     <>
       <UserHeader />
-      <BaseForm title="Editar Cajas" item={item} callback={callback}>
-        <CajaForm item={item} setItem={setItem}/>
+      <BaseForm title="Editar Mesas" item={item} callback={callback}>
+        <MesaForm item={item} setItem={setItem}/>
       </BaseForm>
     </>
   );
 }
 
-EditarCajas.layout = Admin;
+EditarMesas.layout = Admin;
 
-export default EditarCajas;
+export default EditarMesas;
