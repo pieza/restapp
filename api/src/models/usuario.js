@@ -17,7 +17,7 @@ const UsuarioSchema = new Schema({
     type: String, required: true, trim: true, unique: true,
   },
   password: { type: String, required: true, trim: true },
-  empleado: { type: ObjectId, ref: 'Empleado', required: true, trim: true },
+  empleado: { type: ObjectId, ref: 'Empleado'},
   roles: [{ type: ObjectId, ref: 'Rol', default: [] }],
 });
 
