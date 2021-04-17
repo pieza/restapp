@@ -37,7 +37,7 @@ function CrearCajas() {
   return (
     <>
       <UserHeader />
-      <BaseForm title="Crear Cajas" item={item} callback={callback}>
+      <BaseForm title="Apertura Cajas" item={item} callback={callback}>
         <CajaForm item={item} setItem={setItem} />
       </BaseForm>
     </>

@@ -219,7 +219,7 @@ function SidebarClient(props) {
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
-          <h6 className="navbar-heading text-muted">Administración</h6>
+          <h6 className="navbar-heading text-muted">Empleado</h6>
           {/* Navigation */}
           <Nav className="mb-md-3" navbar>
             <NavItem>
@@ -230,20 +230,20 @@ function SidebarClient(props) {
             </NavItem>
             <NavItem>
               <NavLink href="/client/ordenes/crear">
-              <i className="fa fa-users text-blue"></i>
+              <i className="ni ni ni-building text-muted" />
                 Nueva orden
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink href="/client/cajas/apertura">
-              <i className="fa fa-users text-blue"></i>
-                Apertura de caja
+              <i className="ni ni-shop text-green" />
+                Apertura de Caja
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/client/cajas/cierre">
-              <i className="fa fa-users text-blue"></i>
+              <i className="ni ni-money-coins text-pink" />
                 Cierre de caja
               </NavLink>
             </NavItem>
