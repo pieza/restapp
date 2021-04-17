@@ -37,8 +37,9 @@ router.get('/logout', (req, res) => {
   res.send('');
 });
 
-router.get("/current", (req, res) => {
-  return res.json(req.user)
+router.get("/current", async (req, res) => {
+  const user = await Usuario.findById(req.user._id).populate('empleado')
+  return res.json(user)
 });
 
 module.exports = router;

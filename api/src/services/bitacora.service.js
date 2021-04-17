@@ -1,4 +1,4 @@
-const Service = require('./service')
+const Service = require('./Service')
 const Bitacora = require("../models/bitacora")
 const ConsecutivoService = require("./consecutivo.service")
 
