@@ -80,7 +80,7 @@ function HeaderClient() {
                         >
                           Mesas Disponibles
                         </CardTitle>
-                        <span className="h2 font-weight-bold mb-0">{mesas.length}</span>
+                        <span className="h2 font-weight-bold mb-0">{mesas.length - mesas.filter(m => m.estado !== 'disponible').length}</span>
                       </div>
                       <Col className="col-auto">
                         <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
