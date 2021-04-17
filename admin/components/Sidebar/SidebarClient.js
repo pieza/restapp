@@ -1,9 +1,14 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 // nodejs library to set properties for components
 import { PropTypes } from "prop-types";
+import AuthService from "../../services/auth.service";
+import RestauranteService from "../../services/restaurante.service";
+import MesaService from "../../services/mesa.service";
+import ClienteService from "../../services/cliente.service";
+import ProductoService from "../../services/producto.service";
 
 // reactstrap components
 import {
@@ -32,13 +37,40 @@ import {
   Progress,
   Table,
   Container,
+  ListGroup,
+  ListGroupItem,
   Row,
   Col,
 } from "reactstrap";
 
-var ps;
-
 function SidebarClient(props) {
+  const [user, setUser] = useState({});
+  const [restaurante, setRestaurante] = useState({});
+  const [productos, setProductos] = useState([]);
+  const restauranteService = new RestauranteService();
+  const mesaService = new MesaService();
+  const clienteService = new ClienteService();
+  const productoService = new ProductoService();
+  useEffect(async () => {
+    const _user = await AuthService.current();
+    if (_user) {
+      const restaurante_id = _user.empleado.restaurante._id;
+      const productos = await productoService.find({
+        restaurante: restaurante_id,
+      });
+      setProductos(productos);
+    }
+  }, []);
+  // Render Productos Dropdown Items
+  const renderProductos = (productos) => {
+    return productos.map((producto) => {
+      return (
+        <DropdownItem>
+          {producto.nombre} - ({producto.tipo})
+        </DropdownItem>
+      );
+    });
+  };
   // used for checking current route
   const router = useRouter();
   const [collapseOpen, setCollapseOpen] = React.useState(false);
@@ -181,10 +213,10 @@ function SidebarClient(props) {
                       <img alt={logo.imgAlt} src={logo.imgSrc} />
                     </Link>
                   ) : (
-                      <a href={logo.outterLink}>
-                        <img alt={logo.imgAlt} src={logo.imgSrc} />
-                      </a>
-                    )}
+                    <a href={logo.outterLink}>
+                      <img alt={logo.imgAlt} src={logo.imgSrc} />
+                    </a>
+                  )}
                 </Col>
               ) : null}
               <Col className="collapse-close" xs="6">
@@ -224,30 +256,46 @@ function SidebarClient(props) {
           <Nav className="mb-md-3" navbar>
             <NavItem>
               <NavLink href="/client/clientes">
-              <i className="fa fa-users text-blue"></i>
+                <i className="fa fa-users text-blue"></i>
                 Clientes
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/client/ordenes/crear">
-              <i className="ni ni ni-building text-muted" />
+                <i className="ni ni ni-building text-muted" />
                 Nueva orden
               </NavLink>
             </NavItem>
 
             <NavItem>
               <NavLink href="/client/cajas/apertura">
-              <i className="ni ni-shop text-green" />
+                <i className="ni ni-shop text-green" />
                 Apertura de Caja
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/client/cajas/cierre">
-              <i className="ni ni-money-coins text-pink" />
+                <i className="ni ni-money-coins text-pink" />
                 Cierre de caja
               </NavLink>
             </NavItem>
-          </Nav>          
+          </Nav>
+          {/* Search Bar */}
+          <h6 className="navbar-heading text-muted">Productos</h6>
+          <UncontrolledDropdown>
+            <DropdownToggle
+              caret
+              color="secondary"
+              id="dropdownMenuButton"
+              type="button"
+            >
+              Productos
+            </DropdownToggle>
+
+            <DropdownMenu aria-labelledby="dropdownMenuButton">
+              {renderProductos(productos)}
+            </DropdownMenu>
+          </UncontrolledDropdown>
         </Collapse>
       </Container>
     </Navbar>

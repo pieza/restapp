@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import React, { useState, useEffect } from 'react';
 import {
   Card, CardBody, CardTitle, Container, Row, Col,
@@ -24,7 +25,7 @@ function HeaderClient() {
     const _user = await AuthService.current();
     if (_user) {
 	    setUser(_user);
-	    const restaurante_id = _user.empleado.restaurante;
+	    const restaurante_id = _user.empleado.restaurante._id;
 	    const restaurante = await restauranteService.findById(restaurante_id);
 	    if (restaurante) setRestaurante(restaurante);
 	    const mesas = await mesaService.find({ restaurante: restaurante_id });
@@ -32,7 +33,7 @@ function HeaderClient() {
 	    const clientes = await clienteService.find({ restaurante: restaurante_id });
 	    if (clientes.length) setClientes(clientes);
 	    const productos = await productoService.find({ restaurante: restaurante_id });
-	    const totalProductos = productos.reduce((previous, it) => previous += parseInt(it.cantidad), 0);
+	    const totalProductos = productos.reduce((previous, it) => previous += parseInt(it.cantidad), 0); // total cantidad + cantidad producto actual
 	    setProductos(totalProductos)
     }
   }, []);
