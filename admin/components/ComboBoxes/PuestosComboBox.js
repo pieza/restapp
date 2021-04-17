@@ -8,6 +8,7 @@ export default function PuestosComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setPuestos(await service.find())
+    setItem({ ...item, puesto: puestos[0]})
   }, [])
   return (
     <FormGroup>

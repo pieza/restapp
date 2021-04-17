@@ -8,6 +8,7 @@ export default function ClientesComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setClientes(await service.find())
+    setItem({ ...item, cliente: clientes[0]})
   }, [])
   return (
     <FormGroup>

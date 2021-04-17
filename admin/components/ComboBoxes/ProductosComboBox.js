@@ -8,6 +8,7 @@ export default function ProductosComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setProductos(await service.find())
+    setItem({ ...item, producto: productos[0]})
   }, [])
   return (
     <FormGroup>

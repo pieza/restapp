@@ -16,6 +16,7 @@ export default function MesasComboBox({ item, setItem, showLabel=true, byRestaur
       } 
     }
     setMesas(await service.find(filters))
+    setItem({ ...item, mesa: mesas[0]})
   }, [])
 
   return (

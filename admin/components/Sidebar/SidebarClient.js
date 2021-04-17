@@ -241,6 +241,12 @@ function SidebarClient(props) {
                 Apertura de caja
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink href="/client/cajas/cierre">
+              <i className="fa fa-users text-blue"></i>
+                Cierre de caja
+              </NavLink>
+            </NavItem>
           </Nav>          
         </Collapse>
       </Container>

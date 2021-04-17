@@ -8,6 +8,7 @@ export default function RestaurantesComboBox({ item, setItem, showLabel=true }) 
 
   useEffect(async () => {
     setRestaurantes(await service.find())
+    setItem({ ...item, restaurante: restaurantes[0]})
   }, [])
   return (
     <FormGroup>

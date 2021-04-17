@@ -8,6 +8,7 @@ export default function PaisesComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setPaises(await service.find())
+    setItem({ ...item, nacionalidad: paises[0]})
   }, [])
   return (
     <FormGroup>

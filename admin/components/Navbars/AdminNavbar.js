@@ -41,7 +41,7 @@ function AdminNavbar({ brandText }) {
     <>
       <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
         <Container fluid>
-          <Link href="/admin/dashboard">
+          <Link href={user.empleado ? '/client/dashboard' : '/admin/dashboard'}>
             <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
               { user.empleado ? user.empleado.restaurante.nombre : null }
             </a>
