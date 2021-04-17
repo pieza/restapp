@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { FormGroup, Input, Col, Row, Label, Card } from "reactstrap";
 import Service from "../../services/bebida.service";
 
-export default function BebidasMultiSelect({ item, setItem, showLabel=true }) {
+export default function BebidasMultiSelect({ item, setItem, showLabel=true, addMonto=false }) {
   const service = new Service()
   const [bebidas, setBebidas] = useState([])
 
   useEffect(async () => {
     setBebidas(await service.find())
-    console.log(bebidas)
   }, [])
 
   function handleChange(e, bebida) {
     let tmpBebidas = item.bebidas
+    let tmpMonto = item.monto
 
     if(e.target.checked) {
       tmpBebidas.push(bebida._id)
+      if(addMonto) tmpMonto += bebida.precio_unitario
     } else {
       const index = tmpBebidas.indexOf(bebida._id);
       if (index > -1) {
         tmpBebidas.splice(index, 1);
+        if(addMonto) tmpMonto -= bebida.precio_unitario
       }
     }
-    setItem({ ...item, bebidas: tmpBebidas })
+    setItem({ ...item, bebidas: tmpBebidas, monto: tmpMonto })
   }
   if(!item.bebidas) setItem({ ...item, bebidas: [] })
   return (

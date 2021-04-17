@@ -261,9 +261,9 @@ function SidebarClient(props) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/client/ordenes/crear">
+              <NavLink href="/client/ordenes">
                 <i className="ni ni ni-building text-muted" />
-                Nueva orden
+                Ordenes
               </NavLink>
             </NavItem>
 

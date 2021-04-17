@@ -41,7 +41,7 @@ export default function ClienteForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
-          <MesasComboBox item={item} setItem={setItem} byRestaurant={true}/>
+          <MesasComboBox item={item} setItem={setItem} byRestaurant={true} onlyAvailable/>
         </Col>
       </Row>
       <Row>

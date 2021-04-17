@@ -4,8 +4,10 @@ import BuffetsMultiSelect from '../MultiSelects/BuffetsMultiSelect';
 import EspecialidadesMultiSelect from '../MultiSelects/EspecialidadesMultiSelect';
 import ComestiblesMultiSelect from '../MultiSelects/ComestiblesMultiSelect';
 import BebidasMultiSelect from '../MultiSelects/BebidasMultiSelect';
+import { useEffect } from "react";
 
 export default function OrdenForm({ item, setItem }) {
+
   return (
     <>
       <Row>
@@ -41,6 +43,7 @@ export default function OrdenForm({ item, setItem }) {
               type="number"
               onChange={e => setItem({ ...item, monto: e.target.value })}
               value={item.monto}
+              disabled={true}
             />
           </FormGroup>
         </Col>
@@ -61,22 +64,25 @@ export default function OrdenForm({ item, setItem }) {
           <ClientesComboBox item={item} setItem={setItem}/>
         </Col>
         <Col lg="6">
-          <BuffetsMultiSelect item={item} setItem={setItem}/>
+          <BuffetsMultiSelect item={item} setItem={setItem} addMonto/>
         </Col>
       </Row>
       <Row>
+        {/* <Col lg="6">
+          <ComestiblesMultiSelect item={item} setItem={setItem} addMonto/>
+        </Col> */}
         <Col lg="6">
-          <ComestiblesMultiSelect item={item} setItem={setItem}/>
+          <BebidasMultiSelect item={item} setItem={setItem} addMonto/>
         </Col>
         <Col lg="6">
-          <BebidasMultiSelect item={item} setItem={setItem}/>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="6">
-          <EspecialidadesMultiSelect item={item} setItem={setItem}/>
+          <EspecialidadesMultiSelect item={item} setItem={setItem} addMonto/>
         </Col>
       </Row>
+      {/* <Row>
+        <Col lg="6">
+          <EspecialidadesMultiSelect item={item} setItem={setItem} addMonto/>
+        </Col>
+      </Row> */}
     </>
   )
 }

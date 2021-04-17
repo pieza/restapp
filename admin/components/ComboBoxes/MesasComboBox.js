@@ -3,7 +3,7 @@ import { FormGroup, Input } from "reactstrap";
 import AuthService from '../../services/auth.service';
 import Service from "../../services/mesa.service";
 
-export default function MesasComboBox({ item, setItem, showLabel=true, byRestaurant=false }) {
+export default function MesasComboBox({ item, setItem, showLabel=true, byRestaurant=false, onlyAvailable=false }) {
   const service = new Service()
   const [mesas, setMesas] = useState([])
 
@@ -15,7 +15,13 @@ export default function MesasComboBox({ item, setItem, showLabel=true, byRestaur
         filters.restaurante = user.empleado.restaurante._id
       } 
     }
-    setMesas(await service.find(filters))
+    if(onlyAvailable) {
+      filters.estado = 'disponible'
+    }
+    if(item.barra) {
+      setItem({ ...item, mesa: mesas[0]})
+    }
+    setMesas([{ _id: null, numero: "Sin mesa" }, ...(await service.find(filters))])
     setItem({ ...item, mesa: mesas[0]})
   }, [])
 

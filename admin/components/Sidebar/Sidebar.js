@@ -253,6 +253,12 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
             <NavItem>
+              <NavLink href="/admin/empleados">
+              <i className="fa fa-user-plus text-blue"></i>
+                Empleados
+              </NavLink>
+            </NavItem>
+            <NavItem>
               <NavLink href="/admin/puestos">
               <i className="fa fa-user-plus text-blue"></i>
                 Puestos
