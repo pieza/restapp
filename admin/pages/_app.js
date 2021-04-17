@@ -12,7 +12,7 @@ import "assets/scss/nextjs-argon-dashboard.scss";
 import AuthService from "../services/auth.service";
 
 Router.events.on("routeChangeStart", async (url) => {
-  if(!await AuthService.current()) Router.push('/auth/login')
+  //if(!await AuthService.current()) Router.push('/auth/login')
 });
 
 Router.events.on("routeChangeComplete", () => {

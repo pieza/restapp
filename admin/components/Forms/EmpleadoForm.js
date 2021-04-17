@@ -1,10 +1,10 @@
-import { useEffect } from "react";
+import React, { useEffect, useState } from 'react'
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
-import RolesMultiSelect from '../MultiSelects/RolesMultiSelect';
-import EmpleadosComboBox from '../ComboBoxes/EmpleadosComboBox';
+import PaisesComboBox from '../ComboBoxes/PaisesComboBox';
+import PuestosComboBox from '../ComboBoxes/PuestosComboBox';
+import RestaurantesComboBox from '../ComboBoxes/RestaurantesComboBox';
 
-export default function UsuarioForm({ item, setItem }) {
-  
+export default function EmpleadoForm({ item, setItem }) {
   return (
     <>
       <Row>
@@ -23,7 +23,7 @@ export default function UsuarioForm({ item, setItem }) {
           <FormGroup>
             <label>Nombre</label>
             <Input
-              className="form-control-alternative"
+              className="form-contrsol-alternative"
               type="text"
               onChange={e => setItem({ ...item, nombre: e.target.value })}
               value={item.nombre}
@@ -36,7 +36,7 @@ export default function UsuarioForm({ item, setItem }) {
           <FormGroup>
             <label>Apellidos</label>
             <Input
-              className="form-contrsol-alternative"
+              className="form-control-alternative"
               type="text"
               onChange={e => setItem({ ...item, apellidos: e.target.value })}
               value={item.apellidos}
@@ -44,60 +44,39 @@ export default function UsuarioForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
+          <PaisesComboBox item={item} setItem={setItem}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
           <FormGroup>
-            <label>Telefono</label>
+            <label>Telefono 1</label>
+            <Input
+              className="form-control-alternative"
+              type="text"
+              onChange={e => setItem({ ...item, telefono_1: e.target.value })}
+              value={item.telefono_1}
+            />
+          </FormGroup>
+        </Col>
+        <Col lg="6">
+          <FormGroup>
+            <label>Telefono 2</label>
             <Input
               className="form-contrsol-alternative"
               type="text"
-              onChange={e => setItem({ ...item, telefono: e.target.value })}
-              value={item.telefono}
+              onChange={e => setItem({ ...item, telefono_2: e.target.value })}
+              value={item.telefono_2}
             />
           </FormGroup>
         </Col>
       </Row>
       <Row>
         <Col lg="6">
-          <FormGroup>
-            <label>Celular</label>
-            <Input
-              className="form-contrsol-alternative"
-              type="text"
-              onChange={e => setItem({ ...item, celular: e.target.value })}
-              value={item.celular}
-            />
-          </FormGroup>
+          <PuestosComboBox item={item} setItem={setItem}/>
         </Col>
         <Col lg="6">
-          <FormGroup>
-            <label>Nickname</label>
-            <Input
-              className="form-contrsol-alternative"
-              type="text"
-              onChange={e => setItem({ ...item, nickname: e.target.value })}
-              value={item.nickname}
-            />
-          </FormGroup>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="6">
-          <FormGroup>
-            <label>Contraseña</label>
-            <Input
-              className="form-contrsol-alternative"
-              type="text"
-              onChange={e => setItem({ ...item, password: e.target.value })}
-              value={item.password}
-            />
-          </FormGroup>
-        </Col>
-        <Col lg="6">
-          <EmpleadosComboBox item={item} setItem={setItem}/>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg="6">
-          <RolesMultiSelect item={item} setItem={setItem}/>
+          <RestaurantesComboBox item={item} setItem={setItem}/>
         </Col>
       </Row>
     </>

@@ -62,7 +62,7 @@ function Login() {
       AlertUtil.error('Usuario o contraseña incorrectos');
     } else {
       await AlertUtil.success('Inicio exitoso!');
-      router.push('/admin/dashboard')
+      router.push('/admin/restaurantes')
     }
   }
   return (
