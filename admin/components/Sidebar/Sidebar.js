@@ -253,18 +253,6 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/admin/empleados">
-              <i className="fa fa-user text-blue"></i>
-                Empleados
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/admin/clientes">
-              <i className="fa fa-users text-blue"></i>
-                Clientes
-              </NavLink>
-            </NavItem>
-            <NavItem>
               <NavLink href="/admin/puestos">
               <i className="fa fa-user-plus text-blue"></i>
                 Puestos
@@ -281,12 +269,6 @@ function Sidebar(props) {
               <NavLink href="/admin/marcas">
                 <i className="ni ni-tag text-info" />
                 Marcas
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/admin/empresas">
-              <i className="fa fa-building text-info"></i>
-                Empresas
               </NavLink>
             </NavItem>
             <NavItem>
@@ -318,12 +300,6 @@ function Sidebar(props) {
               <NavLink href="/admin/bitacora">
               <i className="fa fa-list text-pink" aria-hidden="true"></i>
                 Bitácora
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/admin/clientes">
-                <i className="ni ni-satisfied text-pink" />
-                Clientes
               </NavLink>
             </NavItem>
             <NavItem>
