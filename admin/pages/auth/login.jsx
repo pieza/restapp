@@ -63,7 +63,7 @@ function Login() {
       AlertUtil.error('Usuario o contraseña incorrectos');
     } else {
       const current = await AuthService.current();
-      await AlertUtil.success('Inicio exitoso!');
+      await AlertUtil.success('Inicio Exitoso!');
       if(current.empleado) {
         router.push('/client/dashboard')
       } else {
@@ -77,7 +77,7 @@ function Login() {
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
-              <small>Sign In</small>
+              <h2>Sign In</h2>
             </div>
             <Form>
               <FormGroup className="mb-3">{signInFormsRender(signInAttributes)}</FormGroup>

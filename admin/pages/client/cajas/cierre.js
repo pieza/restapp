@@ -35,7 +35,7 @@ function CerrarCajas() {
   return (
     <>
       <UserHeader />
-      <BaseForm title="Cerrar Caja" item={item} callback={callback}>
+      <BaseForm title="Cierre Cajas" item={item} callback={callback}>
         <CerrarCajaForm item={item} setItem={setItem} />
       </BaseForm>
     </>
