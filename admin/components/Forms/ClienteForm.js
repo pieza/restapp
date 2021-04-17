@@ -41,7 +41,7 @@ export default function ClienteForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
-          <MesasComboBox item={item} setItem={setItem} />
+          <MesasComboBox item={item} setItem={setItem} byRestaurant={true}/>
         </Col>
       </Row>
       <Row>
@@ -54,6 +54,18 @@ export default function ClienteForm({ item, setItem }) {
               checked={item.reservacion}
               onChange={e => setItem({ ...item, reservacion: e.target.checked })}
             /> Reservacion
+            </Label>
+          </FormGroup>
+        </Col>
+        <Col lg="6">
+          <FormGroup check>
+            <Label>
+            <Input
+              className="form-control-alternative"
+              type="checkbox"
+              checked={item.barra}
+              onChange={e => setItem({ ...item, barra: e.target.checked })}
+            /> Barra
             </Label>
           </FormGroup>
         </Col>

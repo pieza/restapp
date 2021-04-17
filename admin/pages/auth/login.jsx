@@ -21,6 +21,7 @@ import {
 // layout for this page
 import Auth from 'layouts/Auth.js';
 import AlertUtil from '../../utils/alert';
+import AuthService from '../../services/auth.service';
 
 /** Login Component in Project
  * We perform Login operations from here */
@@ -61,8 +62,13 @@ function Login() {
       console.error(response);
       AlertUtil.error('Usuario o contraseña incorrectos');
     } else {
+      const current = await AuthService.current();
       await AlertUtil.success('Inicio exitoso!');
-      router.push('/admin/restaurantes')
+      if(current.empleado) {
+        router.push('/client/dashboard')
+      } else {
+        router.push('/admin/restaurantes')
+      }
     }
   }
   return (

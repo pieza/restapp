@@ -85,7 +85,7 @@ export default function UsuarioForm({ item, setItem }) {
             <label>Contraseña</label>
             <Input
               className="form-contrsol-alternative"
-              type="text"
+              type="password"
               onChange={e => setItem({ ...item, password: e.target.value })}
               value={item.password}
             />

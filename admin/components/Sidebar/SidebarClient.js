@@ -61,7 +61,7 @@ function SidebarClient(props) {
         <NavItem key={key} active={activeRoute(prop.layout + prop.path)}>
           <Link href={prop.layout + prop.path}>
             <NavLink
-              href="#pablo"
+              href="/client/dashboard"
               active={activeRoute(prop.layout + prop.path)}
               onClick={closeCollapse}
             >
@@ -75,7 +75,7 @@ function SidebarClient(props) {
   };
   const { routes, logo } = props;
   let navbarBrand = (
-    <NavbarBrand href="#pablo" className="pt-0">
+    <NavbarBrand href="/client/dashboard" className="pt-0">
       <img alt={logo.imgAlt} className="navbar-brand-img" src={logo.imgSrc} />
     </NavbarBrand>
   );
@@ -223,9 +223,22 @@ function SidebarClient(props) {
           {/* Navigation */}
           <Nav className="mb-md-3" navbar>
             <NavItem>
-              <NavLink href="/admin/clientes">
+              <NavLink href="/client/clientes">
               <i className="fa fa-users text-blue"></i>
                 Clientes
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/client/ordenes/crear">
+              <i className="fa fa-users text-blue"></i>
+                Nueva orden
+              </NavLink>
+            </NavItem>
+
+            <NavItem>
+              <NavLink href="/client/cajas/apertura">
+              <i className="fa fa-users text-blue"></i>
+                Apertura de caja
               </NavLink>
             </NavItem>
           </Nav>          

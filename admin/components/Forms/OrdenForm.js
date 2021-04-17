@@ -1,4 +1,9 @@
 import { Col, FormGroup, Input, Label, Row } from "reactstrap";
+import ClientesComboBox from '../ComboBoxes/ClientesComboBox';
+import BuffetsMultiSelect from '../MultiSelects/BuffetsMultiSelect';
+import EspecialidadesMultiSelect from '../MultiSelects/EspecialidadesMultiSelect';
+import ComestiblesMultiSelect from '../MultiSelects/ComestiblesMultiSelect';
+import BebidasMultiSelect from '../MultiSelects/BebidasMultiSelect';
 
 export default function OrdenForm({ item, setItem }) {
   return (
@@ -30,7 +35,7 @@ export default function OrdenForm({ item, setItem }) {
       <Row>
         <Col lg="6">
           <FormGroup>
-            <label>monto</label>
+            <label>Monto</label>
             <Input
               className="form-contrsol-alternative"
               type="number"
@@ -49,6 +54,27 @@ export default function OrdenForm({ item, setItem }) {
               value={item.simbologia}
             />
           </FormGroup>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <ClientesComboBox item={item} setItem={setItem}/>
+        </Col>
+        <Col lg="6">
+          <BuffetsMultiSelect item={item} setItem={setItem}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <ComestiblesMultiSelect item={item} setItem={setItem}/>
+        </Col>
+        <Col lg="6">
+          <BebidasMultiSelect item={item} setItem={setItem}/>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg="6">
+          <EspecialidadesMultiSelect item={item} setItem={setItem}/>
         </Col>
       </Row>
     </>

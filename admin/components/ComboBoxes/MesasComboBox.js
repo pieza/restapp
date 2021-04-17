@@ -11,20 +11,22 @@ export default function MesasComboBox({ item, setItem, showLabel=true, byRestaur
     const filters = {}
     if(byRestaurant) {
       const user = await AuthService.current()
-      filters.restaurante = user.restaurante
+      if(user.empleado) { 
+        filters.restaurante = user.empleado.restaurante._id
+      } 
     }
     setMesas(await service.find(filters))
   }, [])
 
   return (
     <FormGroup>
-      { showLabel ? <label>Mesas</label> : null }
+      { showLabel ? <label># Mesa</label> : null }
       <Input 
         onChange={e => {setItem({ ...item, mesa: e.target.value })}}
         value={item.mesa}
         type="select">
         { mesas.map((mesa, key) => 
-          <option key={key} value={mesa._id}>{ mesa.unidad_mesa }</option>
+          <option key={key} value={mesa._id}>{ mesa.numero }</option>
         ) }  
       </Input>
     </FormGroup>
