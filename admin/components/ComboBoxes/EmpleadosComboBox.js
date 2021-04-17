@@ -7,7 +7,7 @@ export default function EmpleadosComboBox({ item, setItem, showLabel=true }) {
   const [empleados, setEmpleados] = useState([])
 
   useEffect(async () => {
-    setEmpleados(await service.find())
+    setEmpleados([{_id: null, nombre: 'No asignar'}, ...await service.find()])
   }, [])
   return (
     <FormGroup>

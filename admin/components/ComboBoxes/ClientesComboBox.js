@@ -11,7 +11,7 @@ export default function ClientesComboBox({ item, setItem, showLabel=true }) {
   }, [])
   return (
     <FormGroup>
-      { showLabel ? <label>Clientes</label> : null }
+      { showLabel ? <label>Cliente</label> : null }
       <Input 
         onChange={e => {setItem({ ...item, cliente: e.target.value })}}
         value={item.cliente}

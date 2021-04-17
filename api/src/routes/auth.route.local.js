@@ -38,7 +38,12 @@ router.get('/logout', (req, res) => {
 });
 
 router.get("/current", async (req, res) => {
-  const user = await Usuario.findById(req.user._id).populate('empleado')
+  const user = await Usuario.findById(req.user._id).populate({
+    path: 'empleado',
+    populate: {
+      path: 'restaurante'
+    }
+})
   return res.json(user)
 });
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // reactstrap components
 import { FormGroup, Input, Row, Col } from "reactstrap";
@@ -10,6 +10,9 @@ import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
 import Service from "../../../services/caja.service";
 import CajaForm from "../../../components/Forms/CajaForm";
+import RestauranteService from "../../../services/restaurante.service";
+import AuthService from "../../../services/auth.service";
+import AlertUtil from "../../../utils/alert";
 
 function CrearCajas() {
   const service = new Service();
@@ -18,11 +21,18 @@ function CrearCajas() {
     apertura: true,
     cierre: false,
     descripcion: "Apertura de Caja",
-    restaurante: "60568ff5c86b804a34582b0c",
-    fecha: "2000-01-01",
+    fecha: new Date(),
   });
 
-  const callback = async (data) => await service.create(data);
+  useEffect(async () => {
+    const user = await AuthService.current()
+    setItem({ ...item, restaurante: user.empleado.restaurante._id})
+  }, [])
+
+  const callback = async (data) => {
+    await service.create(data);
+    await AlertUtil.success('Elemento guardado correctamente!')
+  }
 
   return (
     <>

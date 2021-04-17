@@ -31,7 +31,7 @@ function AdminNavbar({ brandText }) {
     await auth.logout()
     router.push('/auth/login')
   }
-
+ 
   useEffect(async () => {
     let _user = await AuthService.current()
     if(_user) setUser(_user)
@@ -43,7 +43,7 @@ function AdminNavbar({ brandText }) {
         <Container fluid>
           <Link href="/admin/dashboard">
             <a className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block">
-              {/* {brandText} */}
+              { user.empleado ? user.empleado.restaurante.nombre : null }
             </a>
           </Link>
        

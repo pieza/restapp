@@ -11,7 +11,7 @@ const FacturaSchema = new Schema({
   buffets: [{ type: ObjectId, ref: 'Buffet' }],
   bebidas: [{ type: ObjectId, ref: 'Bebida' }],
   comestibles: [{ type: ObjectId, ref: 'Comestible' }],
-  especiales: [{ type: ObjectId, ref: 'Especial' }],
+  especialidades: [{ type: ObjectId, ref: 'Especialidad' }],
   cliente: { type: ObjectId, ref: 'Cliente' },
 });
 

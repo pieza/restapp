@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
-import Service from "../../../services/orden.service";
+import Service from "../../../services/factura.service";
 import OrdenForm from "../../../components/Forms/OrdenForm";
 import Client from "../../../layouts/Client";
 
