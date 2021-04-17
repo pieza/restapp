@@ -8,6 +8,7 @@ export default function MarcasComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setMarcas(await service.find())
+    setItem({ ...item, marca: marcas[0]})
   }, [])
   return (
     <FormGroup>

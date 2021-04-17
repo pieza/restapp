@@ -8,6 +8,7 @@ export default function RolesComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setRoles(await service.find())
+    setItem({ ...item, rol: roles[0]})
   }, [])
   return (
     <FormGroup>

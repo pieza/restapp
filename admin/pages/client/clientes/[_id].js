@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // layout for this page
 import Admin from "layouts/Admin.js";
@@ -8,6 +8,7 @@ import BaseForm from "../../../components/Generic/BaseForm";
 import Service from "../../../services/cliente.service";
 import ClienteForm from "../../../components/Forms/ClienteForm";
 import Client from "../../../layouts/Client";
+import AuthService from "../../../services/auth.service";
 
 export async function getStaticProps({ params }) {
   const service = new Service()
@@ -32,6 +33,11 @@ export async function getStaticPaths() {
 function EditarClientes({ data }) {
   const service = new Service()
   const [item, setItem] = useState(data)
+
+  useEffect(async () => {
+    const user = await AuthService.current()
+    setItem({ ...item, restaurante: user.empleado.restaurante._id})
+  }, [])
 
   const callback = async (data) => {
     return await service.update(data._id, data)
