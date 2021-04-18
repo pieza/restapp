@@ -2,27 +2,29 @@ import React, { useEffect, useState } from 'react';
 import { FormGroup, Input, Col, Row, Label, Card } from "reactstrap";
 import Service from "../../services/buffet.service";
 
-export default function BuffetsMultiSelect({ item, setItem, showLabel=true }) {
+export default function BuffetsMultiSelect({ item, setItem, showLabel=true, addMonto=false }) {
   const service = new Service()
   const [buffets, setBuffets] = useState([])
 
   useEffect(async () => {
     setBuffets(await service.find())
-    console.log(buffets)
   }, [])
 
   function handleChange(e, buffet) {
     let tmpBuffets = item.buffets
+    let tmpMonto = item.monto
 
     if(e.target.checked) {
       tmpBuffets.push(buffet._id)
+      if(addMonto) tmpMonto += buffet.precio
     } else {
       const index = tmpBuffets.indexOf(buffet._id);
       if (index > -1) {
-        tmpBuffets.splice(index, 1);
+        tmpBuffets.splice(index, 1)
+        if(addMonto) tmpMonto -= buffet.precio
       }
     }
-    setItem({ ...item, buffets: tmpBuffets })
+    setItem({ ...item, buffets: tmpBuffets, monto: tmpMonto })
   }
   if(!item.buffets) setItem({ ...item, buffets: [] })
   return (

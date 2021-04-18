@@ -2,27 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { FormGroup, Input, Col, Row, Label, Card } from "reactstrap";
 import Service from "../../services/especialidad.service";
 
-export default function EspecialidadesMultiSelect({ item, setItem, showLabel=true }) {
+export default function EspecialidadesMultiSelect({ item, setItem, showLabel=true, addMonto=false }) {
   const service = new Service()
   const [especialidades, setEspecialidades] = useState([])
 
   useEffect(async () => {
     setEspecialidades(await service.find())
-    console.log(especialidades)
   }, [])
 
   function handleChange(e, especialidad) {
     let tmpEspecialidades = item.especialidades
+    let tmpMonto = item.monto
 
     if(e.target.checked) {
       tmpEspecialidades.push(especialidad._id)
+      if(addMonto) tmpMonto += especialidad.precio
     } else {
       const index = tmpEspecialidades.indexOf(especialidad._id);
       if (index > -1) {
         tmpEspecialidades.splice(index, 1);
+        if(addMonto) tmpMonto -= especialidad.precio
+        
       }
     }
-    setItem({ ...item, especialidades: tmpEspecialidades })
+    setItem({ ...item, especialidades: tmpEspecialidades, monto: tmpMonto })
   }
   if(!item.especialidades) setItem({ ...item, especialidades: [] })
   return (

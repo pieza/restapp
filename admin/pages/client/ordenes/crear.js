@@ -10,7 +10,7 @@ import Client from "../../../layouts/Client";
 function CrearOrdenes() {
   const service = new Service()
 
-  const [item, setItem] = useState({})
+  const [item, setItem] = useState({ monto: 0 })
 
   const callback = async (data) => {
     return await service.create(data)
