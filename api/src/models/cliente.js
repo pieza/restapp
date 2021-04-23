@@ -10,7 +10,7 @@ const ClienteSchema = new Schema({
   fecha_llegada: { type: Date },
   reservacion: {type: Boolean, default: false},
   restaurante: { type: ObjectId, ref: 'Restaurante' },
-  mesa: { type: ObjectId, ref: 'Restaurante' },
+  mesa: { type: ObjectId, ref: 'Mesa' },
   barra: { type: Boolean, default: false },
 });
 
