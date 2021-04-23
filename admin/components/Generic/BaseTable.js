@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
 import FiltersForm from "./FiltersForm";
+import RestauranteService from "../../services/restaurante.service";
 
 export default function BaseTable({ title, headers, service, ignoreProps, doEdit = true, doDelete = true, doDetails }) {
   const router = useRouter()
@@ -44,7 +45,20 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
     }
   }
 
-  const getValue = (item) => {
+  const getValue = (header, item) => {
+
+    switch(header) {
+      case 'restaurante':
+      case 'nacionalidad':
+      case 'marca':
+      case 'cliente':
+      case 'puesto':
+        return item.nombre
+      case 'medida':
+        return item.unidad_medida
+    }
+
+
     if(typeof(item) == 'boolean') {
       return item ? 'Si' : 'No'
     }
@@ -89,7 +103,7 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
                   { headers.map((header, key) => {
                     return (
                       <td key={key}>
-                        { getValue(entry[header]) }
+                        { getValue(header, entry[header]) }
                       </td>
                     )
                   })}
