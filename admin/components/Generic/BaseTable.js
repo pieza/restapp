@@ -46,22 +46,25 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
   }
 
   const getValue = (header, item) => {
-
-    switch(header) {
-      case 'restaurante':
-      case 'nacionalidad':
-      case 'marca':
-      case 'cliente':
-      case 'puesto':
-        return item.nombre
-      case 'medida':
-        return item.unidad_medida
+    if(item) {
+      if(typeof(item) == 'object') {
+        switch(header) {
+          case 'restaurante':
+          case 'nacionalidad':
+          case 'marca':
+          case 'cliente':
+          case 'puesto':
+            return item.nombre
+          case 'medida':
+            return item.unidad_medida
+        }
+      }
+        
+      if(typeof(item) == 'boolean') {
+        return item ? 'Si' : 'No'
+      }
     }
-
-
-    if(typeof(item) == 'boolean') {
-      return item ? 'Si' : 'No'
-    }
+    
 
     return item
   }
