@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FormGroup, Input, Col, Row, Label, Card } from "reactstrap";
 import Service from "../../services/bebida.service";
 
-export default function BebidasMultiSelect({ item, setItem, showLabel=true, addMonto=false }) {
+export default function BebidasMultiSelect({ item, setItem, showLabel=true, addMonto=false, disabled }) {
   const service = new Service()
   const [bebidas, setBebidas] = useState([])
 
@@ -40,6 +40,7 @@ export default function BebidasMultiSelect({ item, setItem, showLabel=true, addM
                 type="checkbox"
                 checked={item.bebidas && item.bebidas.indexOf(bebida._id) > -1}
                 onChange={e => {handleChange(e, bebida)}}
+                disabled={disabled}
               /> { bebida.nombre }
               </Label>
             </FormGroup>

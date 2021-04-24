@@ -10,7 +10,6 @@ import {
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
 import FiltersForm from "./FiltersForm";
-import RestauranteService from "../../services/restaurante.service";
 
 export default function BaseTable({ title, headers, service, ignoreProps, doEdit = true, doDelete = true, doDetails }) {
   const router = useRouter()
@@ -53,10 +52,15 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
           case 'nacionalidad':
           case 'marca':
           case 'cliente':
+          case 'usuario':
           case 'puesto':
+          case 'rol':
             return item.nombre
           case 'medida':
             return item.unidad_medida
+          case 'mesa':
+            return item.numero
+          
         }
       }
         

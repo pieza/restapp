@@ -9,6 +9,11 @@ module.exports = class BitacoraService extends Service {
     this.consecutivoService = new ConsecutivoService()
   }
 
+  async find(filters) {
+    return await this.model.find(filters)
+      .populate('usuario')
+  }
+
   /**
    * Creates a new object in the database.
    * 
