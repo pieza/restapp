@@ -67,7 +67,7 @@ function Login() {
       if(current.empleado) {
         router.push('/client/dashboard')
       } else {
-        router.push('/admin/restaurantes')
+        router.push('/admin/dashboard')
       }
     }
   }

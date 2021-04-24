@@ -40,7 +40,7 @@ function EditarOrdenes({ data }) {
   return (
     <>
       <UserHeader />
-      <BaseForm title="Editar Ordenes" item={item} callback={callback}>
+      <BaseForm title="Editar Ordenes" item={item} callback={callback} print>
         <OrdenForm item={item} setItem={setItem} disabled/>
       </BaseForm>
     </>
