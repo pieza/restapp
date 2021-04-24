@@ -25,7 +25,7 @@ function Auth(props) {
             <div className="header-body text-center mb-7">
               <Row className="justify-content-center">
                 <Col lg="5" md="6">
-                  <h1 className="text-white">Bienvenido!</h1>
+                  <h1 className="text-white">¡Bienvenido!</h1>
                 </Col>
               </Row>
             </div>

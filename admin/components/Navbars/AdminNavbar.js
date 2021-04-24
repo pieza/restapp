@@ -54,7 +54,7 @@ function AdminNavbar({ brandText }) {
                   <span className="avatar avatar-sm rounded-circle">
                     <img
                       alt="..."
-                      src={require("assets/img/theme/user-pic.jpg")}
+                      src={require("assets/img/theme/icon.png")}
                     />
                   </span>
                   <Media className="ml-2 d-none d-lg-block">
@@ -66,14 +66,8 @@ function AdminNavbar({ brandText }) {
               </DropdownToggle>
               <DropdownMenu className="dropdown-menu-arrow" right>
                 <DropdownItem className="noti-title" header tag="div">
-                  <h6 className="text-overflow m-0">Bienvenido!</h6>
+                  <h6 className="text-overflow m-0">¡Bienvenido!</h6>
                 </DropdownItem>
-                <Link href="/admin/profile">
-                  <DropdownItem>
-                    <i className="ni ni-single-02" />
-                    <span>Perfil</span>
-                  </DropdownItem>
-                </Link>
                 <DropdownItem divider />
                 <DropdownItem href="#pablo" onClick={(e) => onLogout(e)}>
                   <i className="ni ni-user-run" />
