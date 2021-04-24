@@ -14,11 +14,14 @@ import {
   NavItem,
   NavLink,
   Nav,
+  CardImg,
   Progress,
   Table,
   Container,
   Row,
   Col,
+  CardTitle,
+  CardText,
 } from "reactstrap";
 // layout for this page
 import Admin from "layouts/Admin.js";
@@ -31,6 +34,8 @@ import {
 } from "variables/charts.js";
 
 import Header from "components/Headers/Header.js";
+const cardStyle = { width: "18rem" };
+import  DashboardHeader from "components/Headers/DashboardHeader.js";
 
 const Dashboard = (props) => {
   const [activeNav, setActiveNav] = React.useState(1);
@@ -47,9 +52,153 @@ const Dashboard = (props) => {
   };
   return (
     <>
-      <Header />
+    <DashboardHeader />
       {/* Page content */}
-      <Container className="mt--7" fluid>
+      <Container className="mt--5" fluid>
+        <Row>
+          <Col className="mb-5 mb-xl-0" xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/fondo.jpeg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+
+          </Col>
+
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row className="mt-5">
+          <Col className="mb-5 mb-xl-0" xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+
+          </Col>
+
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+          <Col xl="3">
+            <Card style={cardStyle}>
+              <CardImg
+                alt="..."
+                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                top
+              ></CardImg>
+              <CardBody>
+                <CardTitle>Card title</CardTitle>
+                <CardText>
+                  Some quick example text to build on the card title and make up the
+                  bulk of the card's content.
+          </CardText>
+ 
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
       </Container>
     </>
   );
