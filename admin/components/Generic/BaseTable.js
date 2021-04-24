@@ -82,7 +82,8 @@ export default function BaseTable({ title, headers, service, ignoreProps, doEdit
       <CardHeader className="border-0">
         <Row className="align-items-center">
           <div className="col">
-            <h3 className="mb-0">{title}</h3>
+            <h1 className="mb-0">{title}</h1>
+            <br></br>
           </div>
         </Row>
         <Row>
