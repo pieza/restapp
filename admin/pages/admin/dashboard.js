@@ -64,10 +64,9 @@ const Dashboard = (props) => {
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Restaurantes</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Administra y crea tu restaurante desde la una plataforma en línea fácil de usar
           </CardText>
  
               </CardBody>
@@ -79,14 +78,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/prove.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Proovedores</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Maneja los productos que suministran los provedores de cada restaurante
           </CardText>
  
               </CardBody>
@@ -96,14 +94,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/empleados.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Empleados</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Administrá los empleados de cada restaurante, así como sus roles y puesto
           </CardText>
  
               </CardBody>
@@ -113,14 +110,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/facturacion.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Facturación</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Llevá control de todas las facturas de cada restaurante para un mejor control de las finanzas
           </CardText>
  
               </CardBody>
@@ -132,14 +128,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/sec.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Seguridad</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Controle los roles de sus usuarios al sistema por medio de permisos en la seccion de seguridad
           </CardText>
  
               </CardBody>
@@ -151,14 +146,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/productos.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Productos</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Maneja los productos para asegurarse que no se queden sin inventario
           </CardText>
  
               </CardBody>
@@ -168,14 +162,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/caja.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Cajas</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Manejo de apertura y cierre de cajas de cada restaurante para control diario
           </CardText>
  
               </CardBody>
@@ -185,14 +178,13 @@ const Dashboard = (props) => {
             <Card style={cardStyle}>
               <CardImg
                 alt="..."
-                src={require("assets/img/theme/img-1-1000x600.jpg")}
+                src={require("assets/img/theme/mesas.jpeg")}
                 top
               ></CardImg>
               <CardBody>
-                <CardTitle>Card title</CardTitle>
+                <CardTitle>Mesas</CardTitle>
                 <CardText>
-                  Some quick example text to build on the card title and make up the
-                  bulk of the card's content.
+                  Administración de las mesas para un mejor control de los clientes
           </CardText>
  
               </CardBody>
