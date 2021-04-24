@@ -7,7 +7,6 @@ import UserHeader from "components/Headers/UserHeader.js";
 import BaseForm from "../../../components/Generic/BaseForm";
 import Service from "../../../services/factura.service";
 import OrdenForm from "../../../components/Forms/OrdenForm";
-import Client from "../../../layouts/Client";
 
 export async function getStaticProps({ params }) {
   const service = new Service()
@@ -41,12 +40,12 @@ function EditarOrdenes({ data }) {
     <>
       <UserHeader />
       <BaseForm title="Editar Ordenes" item={item} callback={callback}>
-        <OrdenForm item={item} setItem={setItem} disabled/>
+        <OrdenForm item={item} setItem={setItem}/>
       </BaseForm>
     </>
   );
 }
 
-EditarOrdenes.layout = Client;
+EditarOrdenes.layout = Admin;
 
 export default EditarOrdenes;

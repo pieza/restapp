@@ -6,7 +6,7 @@ import ComestiblesMultiSelect from '../MultiSelects/ComestiblesMultiSelect';
 import BebidasMultiSelect from '../MultiSelects/BebidasMultiSelect';
 import { useEffect } from "react";
 
-export default function OrdenForm({ item, setItem }) {
+export default function OrdenForm({ item, setItem, disabled }) {
 
   return (
     <>
@@ -30,6 +30,7 @@ export default function OrdenForm({ item, setItem }) {
               type="date"
               onChange={e => setItem({ ...item, fecha: e.target.value })}
               value={item.fecha}
+              disabled={disabled}
             />
           </FormGroup>
         </Col>
@@ -48,41 +49,22 @@ export default function OrdenForm({ item, setItem }) {
           </FormGroup>
         </Col>
         <Col lg="6">
-          <FormGroup>
-            <label>Simbologia</label>
-            <Input
-              className="form-control-alternative"
-              type="text"
-              onChange={e => setItem({ ...item, simbologia: e.target.value })}
-              value={item.simbologia}
-            />
-          </FormGroup>
+          <ClientesComboBox item={item} setItem={setItem} disabled={disabled}/>
         </Col>
       </Row>
       <Row>
         <Col lg="6">
-          <ClientesComboBox item={item} setItem={setItem}/>
+          <EspecialidadesMultiSelect item={item} setItem={setItem} addMonto disabled={disabled}/>
         </Col>
         <Col lg="6">
-          <BuffetsMultiSelect item={item} setItem={setItem} addMonto/>
+          <BuffetsMultiSelect item={item} setItem={setItem} addMonto disabled={disabled}/>
         </Col>
       </Row>
       <Row>
-        {/* <Col lg="6">
-          <ComestiblesMultiSelect item={item} setItem={setItem} addMonto/>
-        </Col> */}
         <Col lg="6">
-          <BebidasMultiSelect item={item} setItem={setItem} addMonto/>
-        </Col>
-        <Col lg="6">
-          <EspecialidadesMultiSelect item={item} setItem={setItem} addMonto/>
+          <BebidasMultiSelect item={item} setItem={setItem} addMonto disabled={disabled}/>
         </Col>
       </Row>
-      {/* <Row>
-        <Col lg="6">
-          <EspecialidadesMultiSelect item={item} setItem={setItem} addMonto/>
-        </Col>
-      </Row> */}
     </>
   )
 }
