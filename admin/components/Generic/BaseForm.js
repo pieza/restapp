@@ -12,7 +12,7 @@ import {
 } from "reactstrap";
 import AlertUtil from "../../utils/alert";
 
-export default function BaseForm({ children, title, item, callback, disable }) {
+export default function BaseForm({ children, title, item, callback, disable, print }) {
   const router = useRouter()
 
   const handleButton = async (e) => {
@@ -44,7 +44,8 @@ export default function BaseForm({ children, title, item, callback, disable }) {
               <Form>
                 <div className="pl-lg-4">
                   { children }
-                  { !disable ? <Row>
+                  <Row>
+                  { !disable ? 
                     <Col lg="6">
                       <Button
                         className="mr-4"
@@ -55,7 +56,18 @@ export default function BaseForm({ children, title, item, callback, disable }) {
                         Guardar
                       </Button>
                     </Col>
-                  </Row> : null }
+                   : null }
+                   { print ? <Col lg="6">
+                      <Button
+                        className="mr-4"
+                        color="info"
+                        onClick={(e) => window.print()}
+                        size="md"
+                      >
+                        Imprimir
+                      </Button>
+                    </Col> : null }
+                   </Row>
                 </div>
               </Form>
             </CardBody>

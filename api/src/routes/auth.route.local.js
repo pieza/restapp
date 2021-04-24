@@ -38,12 +38,13 @@ router.get('/logout', (req, res) => {
 });
 
 router.get("/current", async (req, res) => {
+  if(!req.user) return res.json(null)
   const user = await Usuario.findById(req.user._id).populate({
     path: 'empleado',
     populate: {
       path: 'restaurante'
     }
-})
+  }).populate('roles')
   return res.json(user)
 });
 

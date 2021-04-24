@@ -26,14 +26,40 @@ Router.events.on("routeChangeError", () => {
 
 export default class MyApp extends App {
   componentDidMount() {
-    let comment = document.createComment(`
-
-`);
+    let comment = document.createComment(``);
     document.insertBefore(comment, document.documentElement);
     require('sweetalert2');
   }
+
   static async getInitialProps({ Component, router, ctx }) {
     let pageProps = {};
+
+    const page = router.pathname
+    const user = await AuthService.current()
+
+    if(user) {
+      if(page.includes('/auth/login')) {
+        console.log('xDD')
+        return {
+          redirect: {
+            permanent: false,
+            destination: user.empleado ? '/client/dashboard' : '/admin/dashboard'
+          }
+        }
+      }
+    } else {
+      console.log('uwu')
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/auth/login'
+        }
+      }
+    }
+
+
+
+    console.log(page, user)
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);
@@ -41,6 +67,7 @@ export default class MyApp extends App {
 
     return { pageProps };
   }
+
   render() {
     const { Component, pageProps } = this.props;
 
