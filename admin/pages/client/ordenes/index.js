@@ -30,7 +30,10 @@ function Ordenes() {
             <BaseTable 
               headers={headers}
               title="Ordenes" 
-              service={service} />
+              service={service} 
+              doEdit={false}
+              doDelete={false}
+              doDetails={true} />
           </Col>
         </Row>
         {/* Footer */}

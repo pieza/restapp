@@ -11,13 +11,14 @@ import {
 import Admin from "layouts/Admin.js";
 // core components
 import UserHeader from "components/Headers/UserHeader.js";
-import Service from "../../../services/puesto.service";
+import Service from "../../../services/factura.service";
 import Link from "next/link";
 import BaseTable from "../../../components/Generic/BaseTable";
+import Client from "../../../layouts/Client";
 
-function Puestos() {
+function Ordenes() {
   const service = new Service()
-  const headers = ["codigo", "nombre", "tipo"]
+  const headers = ["codigo", "monto", "cliente", "fecha"]
 
   return (
     <>
@@ -28,15 +29,15 @@ function Puestos() {
           <Col  xl="12">
             <BaseTable 
               headers={headers}
-              title="Puestos" 
+              title="Ordenes" 
               service={service} />
           </Col>
         </Row>
         {/* Footer */}
         <Row>
           <Col className="py-4" lg="6">
-            <Link href="/admin/puestos/crear">
-              <Button className="btn btn-info">Nuevo Puesto</Button>
+            <Link href="/client/ordenes/crear">
+              <Button className="btn btn-info">Nueva Orden</Button>
             </Link> 
           </Col>
         </Row>
@@ -45,6 +46,6 @@ function Puestos() {
   );
 }
 
-Puestos.layout = Admin;
+Ordenes.layout = Admin;
 
-export default Puestos;
+export default Ordenes;

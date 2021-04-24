@@ -8,6 +8,7 @@ export default function MedidasComboBox({ item, setItem, showLabel=true }) {
 
   useEffect(async () => {
     setMedidas(await service.find())
+    setItem({ ...item, medida: medidas[0]})
   }, [])
   return (
     <FormGroup>

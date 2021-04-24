@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { FormGroup, Input, Col, Row, Label, Card } from "reactstrap";
 import Service from "../../services/especialidad.service";
 
-export default function EspecialidadesMultiSelect({ item, setItem, showLabel=true, addMonto=false }) {
+export default function EspecialidadesMultiSelect({ item, setItem, showLabel=true, addMonto=false, disabled }) {
   const service = new Service()
   const [especialidades, setEspecialidades] = useState([])
 
@@ -41,6 +41,7 @@ export default function EspecialidadesMultiSelect({ item, setItem, showLabel=tru
                 type="checkbox"
                 checked={item.especialidades && item.especialidades.indexOf(especialidad._id) > -1}
                 onChange={e => {handleChange(e, especialidad)}}
+                disabled={disabled}
               /> { especialidad.nombre }
               </Label>
             </FormGroup>
