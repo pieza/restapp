@@ -108,63 +108,25 @@ function Sidebar(props) {
         {/* User */}
         <Nav className="align-items-center d-md-none">
           <UncontrolledDropdown nav>
-            <DropdownToggle nav className="nav-link-icon">
-              <i className="ni ni-bell-55" />
-            </DropdownToggle>
-            <DropdownMenu
-              aria-labelledby="navbar-default_dropdown_1"
-              className="dropdown-menu-arrow"
-              right
-            >
-              <DropdownItem>Action</DropdownItem>
-              <DropdownItem>Another action</DropdownItem>
-              <DropdownItem divider />
-              <DropdownItem>Something else here</DropdownItem>
-            </DropdownMenu>
-          </UncontrolledDropdown>
-          <UncontrolledDropdown nav>
             <DropdownToggle nav>
               <Media className="align-items-center">
                 <span className="avatar avatar-sm rounded-circle">
                   <img
                     alt="..."
-                    src={require("assets/img/theme/team-1-800x800.jpg")}
+                    src={require("assets/img/theme/icon.png")}
                   />
                 </span>
               </Media>
             </DropdownToggle>
             <DropdownMenu className="dropdown-menu-arrow" right>
               <DropdownItem className="noti-title" header tag="div">
-                <h6 className="text-overflow m-0">Welcome!</h6>
+                <h6 className="text-overflow m-0">¡Bienvenido!</h6>
               </DropdownItem>
-              <Link href="/admin/profile">
-                <DropdownItem>
-                  <i className="ni ni-single-02" />
-                  <span>My profile</span>
-                </DropdownItem>
-              </Link>
-              <Link href="/admin/profile">
-                <DropdownItem>
-                  <i className="ni ni-settings-gear-65" />
-                  <span>Settings</span>
-                </DropdownItem>
-              </Link>
-              <Link href="/admin/profile">
-                <DropdownItem>
-                  <i className="ni ni-calendar-grid-58" />
-                  <span>Activity</span>
-                </DropdownItem>
-              </Link>
-              <Link href="/admin/profile">
-                <DropdownItem>
-                  <i className="ni ni-support-16" />
-                  <span>Support</span>
-                </DropdownItem>
-              </Link>
+        
               <DropdownItem divider />
               <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
                 <i className="ni ni-user-run" />
-                <span>Logout</span>
+                <span>Cerrar Sesión</span>
               </DropdownItem>
             </DropdownMenu>
           </UncontrolledDropdown>
@@ -172,7 +134,7 @@ function Sidebar(props) {
         {/* Collapse */}
         <Collapse navbar isOpen={collapseOpen}>
           {/* Collapse header */}
-          <div className="navbar-collapse-header d-md-none">
+          <div className="navbar-collapse-header mb-0">
             <Row>
               {logo ? (
                 <Col className="collapse-brand" xs="6">
@@ -184,40 +146,18 @@ function Sidebar(props) {
                       <a href={logo.outterLink}>
                         <img alt={logo.imgAlt} src={logo.imgSrc} />
                       </a>
+                      
                     )}
                 </Col>
               ) : null}
-              <Col className="collapse-close" xs="6">
-                <button
-                  className="navbar-toggler"
-                  type="button"
-                  onClick={toggleCollapse}
-                >
-                  <span />
-                  <span />
-                </button>
-              </Col>
             </Row>
+            
           </div>
           {/* Form */}
-          <Form className="mt-4 mb-3 d-md-none">
-            <InputGroup className="input-group-rounded input-group-merge">
-              <Input
-                aria-label="Search"
-                className="form-control-rounded form-control-prepended"
-                placeholder="Search"
-                type="search"
-              />
-              <InputGroupAddon addonType="prepend">
-                <InputGroupText>
-                  <span className="fa fa-search" />
-                </InputGroupText>
-              </InputGroupAddon>
-            </InputGroup>
-          </Form>
+          <hr className="mt-0" />
+
           {/* Navigation */}
           {/* Divider */}
-          <hr className="my-3" />
           {/* Heading */}
           <h6 className="navbar-heading text-muted">Administración</h6>
           {/* Navigation */}

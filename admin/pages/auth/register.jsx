@@ -68,7 +68,7 @@ function Register() {
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
-              <small>Registrarse</small>
+            <h2>Registrarse</h2>
             </div>
             <Form role="form">
               <FormGroup>{signUpFormsRender(signUpAttributes)}</FormGroup>

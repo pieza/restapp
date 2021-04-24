@@ -77,7 +77,7 @@ function Login() {
         <Card className="bg-secondary shadow border-0">
           <CardBody className="px-lg-5 py-lg-5">
             <div className="text-center text-muted mb-4">
-              <h2>Sign In</h2>
+              <h2>Iniciar Sesión</h2>
             </div>
             <Form>
               <FormGroup className="mb-3">{signInFormsRender(signInAttributes)}</FormGroup>

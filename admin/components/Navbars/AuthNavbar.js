@@ -55,7 +55,7 @@ function AdminNavbar() {
                 <Link href="/auth/register">
                   <NavLink href="#pablo" className="nav-link-icon">
                     <i className="ni ni-circle-08" />
-                    <span className="nav-link-inner--text">Register</span>
+                    <span className="nav-link-inner--text">Registrar</span>
                   </NavLink>
                 </Link>
               </NavItem>
@@ -63,7 +63,7 @@ function AdminNavbar() {
                 <Link href="/auth/login">
                   <NavLink href="#pablo" className="nav-link-icon">
                     <i className="ni ni-key-25" />
-                    <span className="nav-link-inner--text">Login</span>
+                    <span className="nav-link-inner--text">Iniciar Sesión</span>
                   </NavLink>
                 </Link>
               </NavItem>
