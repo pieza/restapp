@@ -309,7 +309,7 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/admin/facturacion">
+              <NavLink href="/admin/ordenes">
                 <i className="ni ni-money-coins text-pink" />
                 Facturación
               </NavLink>
