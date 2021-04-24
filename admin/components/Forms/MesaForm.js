@@ -1,6 +1,45 @@
-import { Col, FormGroup, Input, Label, Row } from "reactstrap";
-import RestaurantesComboBox from '../ComboBoxes/RestaurantesComboBox';
+/* eslint-disable  */
+import { Col, FormGroup, Input, Label, Row, Button } from "reactstrap";
+import RestaurantesComboBox from "../ComboBoxes/RestaurantesComboBox";
+import MesaService from "../../services/mesa.service";
+import AlertUtil from "../../utils/alert";
+import { useRouter } from "next/router";
 
+/** @description Handles Free Table Functionality */
+const freeTable = async (id, router) => {
+  const mesaService = new MesaService();
+  return await mesaService
+    .update(id, { estado: "disponible" })
+    .then(async () => {
+      await AlertUtil.success("Elemento guardado correctamente!");
+      let routes = router.pathname.split("/");
+      routes.pop();
+      router.push(`${routes.join("/")}`);
+    });
+};
+/** @description Renders Free Table Button  */
+const renderFreeTableButton = (mesa) => {
+  const router = useRouter()
+  if (mesa.estado !== "disponible") {
+    return (
+      <Row>
+        <Col lg="6">
+          <FormGroup>
+            <Button
+              className="mr-4"
+              color="danger"
+              onClick={() => freeTable(mesa._id, router)}
+              size="md"
+            >
+              Liberar
+            </Button>
+          </FormGroup>
+        </Col>
+      </Row>
+    );
+  }
+  return <div></div>;
+};
 export default function MesaForm({ item, setItem }) {
   return (
     <>
@@ -51,12 +90,13 @@ export default function MesaForm({ item, setItem }) {
             <Input
               className="form-control-alternative"
               type="number"
-              onChange={e => setItem({ ...item, numero: e.target.value })}
+              onChange={(e) => setItem({ ...item, numero: e.target.value })}
               value={item.numero}
             />
           </FormGroup>
         </Col>
       </Row>
+      {renderFreeTableButton(item)}
     </>
-  )
+  );
 }
