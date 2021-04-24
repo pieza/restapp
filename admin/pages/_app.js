@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "next/app";
 import Head from "next/head";
-import Router from "next/router";
+import Router, { useRouter } from "next/router";
 
 import PageChange from "components/PageChange/PageChange.js";
 
@@ -25,41 +25,62 @@ Router.events.on("routeChangeError", () => {
 });
 
 export default class MyApp extends App {
-  componentDidMount() {
+  async componentDidMount() {
     let comment = document.createComment(``);
     document.insertBefore(comment, document.documentElement);
     require('sweetalert2');
-  }
 
-  static async getInitialProps({ Component, router, ctx }) {
-    let pageProps = {};
 
-    const page = router.pathname
+    const page = Router.pathname
+    const acPage = page.split('/').pop()
     const user = await AuthService.current()
 
+    console.log(page, user)
+
     if(user) {
+      const roles = user.roles.map(rol => { return rol.nombre })
+      console.log(roles)
       if(page.includes('/auth/login')) {
         console.log('xDD')
-        return {
-          redirect: {
-            permanent: false,
-            destination: user.empleado ? '/client/dashboard' : '/admin/dashboard'
-          }
-        }
+        Router.push(user.empleado ? '/client/dashboard' : '/admin/dashboard')
       }
+
+      if(page.includes('/admin') && user.empleado) {
+        Router.push('/client/dashboard')
+      }
+
+      if(page.includes('/client') && !user.empleado) {
+        Router.push('/admin/dashboard')
+      }
+
+      if(page.includes('/client') && !user.empleado) {
+        Router.push('/admin/dashboard')
+      }
+
+      if(['usuarios', 'cajas', 'consecutivos', 'paises', 'roles', 'medidas'].includes(acPage) && !(roles.includes('Administrador') || roles.includes('Seguridad'))) {
+        Router.push('/admin/dashboard')
+      }
+
+      if(['restaurantes', 'buffet', 'bebidas', 'especialidades', 'mesas', 'empleados', 'puestos'].includes(acPage) && !(roles.includes('Administrador'))) {
+        Router.push('/admin/dashboard')
+      }
+
+      if(['marcas', 'comestibles', 'productos', 'proveedores'].includes(acPage) && !(roles.includes('Administrador'))) {
+        Router.push('/admin/dashboard')
+      }
+
+      if(['bitacora', 'facturacion'].includes(acPage) && !(roles.includes('Administrador') || roles.includes('Cuentas'))) {
+        Router.push('/admin/dashboard')
+      }
+   
     } else {
       console.log('uwu')
-      return {
-        redirect: {
-          permanent: false,
-          destination: '/auth/login'
-        }
-      }
+      Router.push('/auth/login')
     }
+  }
 
-
-
-    console.log(page, user)
+  static async getInitialProps({ Component, ctx }) {
+    let pageProps = {};
 
     if (Component.getInitialProps) {
       pageProps = await Component.getInitialProps(ctx);

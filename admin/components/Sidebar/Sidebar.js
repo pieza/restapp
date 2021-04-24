@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 // nodejs library to set properties for components
@@ -35,12 +35,15 @@ import {
   Row,
   Col,
 } from "reactstrap";
+import AuthService from "../../services/auth.service";
 
 var ps;
 
 function Sidebar(props) {
   // used for checking current route
   const router = useRouter();
+  const [user, setUser] = useState({})
+  const [roles, setRoles] = useState([])
   const [collapseOpen, setCollapseOpen] = React.useState(false);
   // verifies if routeName is the one active (in browser input)
   const activeRoute = (routeName) => {
@@ -54,6 +57,15 @@ function Sidebar(props) {
   const closeCollapse = () => {
     setCollapseOpen(false);
   };
+
+  useEffect(async () => {
+    setUser(await AuthService.current())
+    if(user && user.roles) {
+      setRoles( user.roles.map(rol => { return rol.nombre }))
+    }
+  }, [AuthService.current()])
+
+  console.log(user, roles)
   // creates the links that appear in the left menu / Sidebar
   const createLinks = (routes) => {
     return routes.map((prop, key) => {
@@ -153,12 +165,8 @@ function Sidebar(props) {
             </Row>
             
           </div>
-          {/* Form */}
+          { roles.includes('Administrador') ? <>
           <hr className="mt-0" />
-
-          {/* Navigation */}
-          {/* Divider */}
-          {/* Heading */}
           <h6 className="navbar-heading text-muted">Administración</h6>
           {/* Navigation */}
           <Nav className="mb-md-3" navbar>
@@ -205,6 +213,9 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
           </Nav>
+          
+          </> : null }
+          { roles.includes('Administrador') ? <>
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
@@ -236,6 +247,8 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
           </Nav>
+          </> : null }
+          { roles.includes('Administrador') || roles.includes('Cuentas') ? <>
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
@@ -255,6 +268,8 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
           </Nav>
+          </> : null }
+          { roles.includes('Administrador') || roles.includes('Seguridad') ? <>
           {/* Divider */}
           <hr className="my-3" />
           {/* Heading */}
@@ -298,6 +313,7 @@ function Sidebar(props) {
               </NavLink>
             </NavItem>
           </Nav>
+          </> : null }
         </Collapse>
       </Container>
     </Navbar>
